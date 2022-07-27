@@ -7,7 +7,8 @@ function App() {
     <div className="App">
       <h1>HELLO PEOPLE</h1>
       {/* <Profile /> */}
-      <Navigation loggedIn={false} />
+      <Navigation loggedIn={true} />
+      <Profile />
     </div>
   );
 }

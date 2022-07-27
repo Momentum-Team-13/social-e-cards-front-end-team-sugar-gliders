@@ -15,14 +15,16 @@ function Navigation(props) {
     return (
         <>
             <h1>HELLO AGAIN</h1>
-            <NavigationLink text={loggedIn} link="/log-in" />
+            <NavigationLink text={loggedIn} link="/auth/token/login/" />
             {props.loggedIn ? (
                 <>
-                    <NavigationLink text="Profile " link="https://www.excalidraw.com" />
-                    <NavigationLink text="Create Cards " link="https://www.github.com" />
+                    <NavigationLink text="Profile " link="/auth/users/me/" />
+                    <NavigationLink text="Create Cards " link="/create-card/" />
                 </>
             ) : (
-                " "
+                <>
+                    <Navigation text="Create Account" link="/auth/users/" />
+                </>
             )
             }
             {/* <NavigationLink text="Create Cards " link="/create-cards" /> */}
