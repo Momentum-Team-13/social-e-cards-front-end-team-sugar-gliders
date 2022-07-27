@@ -32,8 +32,8 @@ function App() {
           </div>
         )}
       </div> */}
-      <LogIn baseURL={baseURL} />
-      <Navigation baseURL={baseURL} areYouLoggedIn={true} />
+      {/* <LogIn baseURL={baseURL} /> */}
+      <Navigation baseURL={baseURL} areYouLoggedIn={false} />
     </>
   );
 }

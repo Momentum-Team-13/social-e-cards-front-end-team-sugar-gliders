@@ -3,7 +3,7 @@ import NavigationLink from "./nav-link";
 import { useState } from "react";
 import LogIn from "./log-in";
 
-function Navigation({ areYouLoggedIn }) {
+function Navigation({ areYouLoggedIn, baseURL }) {
     const [loggedIn, setLoggedIn] = useState("Log In")
 
     useEffect(() => {
@@ -19,7 +19,6 @@ function Navigation({ areYouLoggedIn }) {
     return (
         <>
             <h1>HELLO AGAIN haha</h1>
-            {/* <LogIn baseURL={baseURL} /> */}
             {areYouLoggedIn ? (
                 <>
                     <NavigationLink text="Profile " link="/auth/users/me/" />
@@ -28,7 +27,8 @@ function Navigation({ areYouLoggedIn }) {
                 </>
             ) : (
                 <>
-                    <NavigationLink text="Log In" link="/auth/token/login/" />
+                    <LogIn baseURL={baseURL} />
+                    {/* <NavigationLink text="Log In" link="/auth/token/login/" /> */}
                     <NavigationLink text="Create Account" link="/auth/users/" />
                 </>
             )
