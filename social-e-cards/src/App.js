@@ -6,8 +6,7 @@ function App() {
   return (
     <div className="App">
       <h1>HELLO PEOPLE</h1>
-      {/* <Profile /> */}
-      <Navigation loggedIn={true} />
+      <Navigation areYouLoggedIn={false} />
       <Profile />
     </div>
   );
