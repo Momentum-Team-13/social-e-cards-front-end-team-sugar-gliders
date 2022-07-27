@@ -4,6 +4,7 @@ function Profile() {
     return (
         <>
             <h1>profile</h1>
+            <h3>username, email, image, date, ID, name</h3>
         </>
     );
 }
