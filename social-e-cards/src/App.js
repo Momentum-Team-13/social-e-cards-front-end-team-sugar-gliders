@@ -9,7 +9,7 @@ function App() {
     return (
         <BrowserRouter>
             <Pages />
-            <Navigation areYouLoggedIn={false} />
+            <Navigation areYouLoggedIn={true} />
         </BrowserRouter>
     );
 }

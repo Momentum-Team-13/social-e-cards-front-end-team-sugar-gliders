@@ -34,6 +34,9 @@ function Navigation({ areYouLoggedIn, baseURL }) {
                     <button>
                         <Link to={"/follower"}>Following</Link>
                     </button>
+                    <button>
+                        <Link to={"/logOut"}>Log Out?</Link>
+                    </button>
                     {/* <NavigationLink text="Profile " link="/auth/users/me/" />
                     <NavigationLink text="Create Cards " link="/create-card/" />
                     <NavigationLink text="Log Out" link="/auth/token/logout/" /> */}
