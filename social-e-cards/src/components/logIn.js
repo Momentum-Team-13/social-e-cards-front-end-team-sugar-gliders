@@ -1,30 +1,42 @@
 import axios from 'axios'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { Navigate } from "react-router-dom"
 
-function LogIn({ baseURL }) {
+function LogIn() {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [authToken, setAuthToken] = useState('')
     const [error, setError] = useState([])
+    const [areYouLoggedIn, setAreYouLoggedIn] = useState(false)
 
     const handleSubmit = (event) => {
         event.preventDefault()
         axios
-            .post(`${baseURL}auth/token/login`, {
+            .post(`https://sg-ecard-api.herokuapp.com/auth/token/login`, {
                 username: username,
                 password: password,
             })
             .then((res) => {
-                let auth_token = res.data.auth_token;
-                setAuthToken(auth_token);
-                console.log(auth_token);
-                localStorage.setItem("auth_token", auth_token);
+                setAuthToken(res.data.auth_token);
+                console.log(authToken);
             })
             .catch((res) => {
                 let error = res.response.data.non_field_errors;
                 setError(error);
             })
     }
+    useEffect(() => {
+        if (username && authToken) {
+            setAreYouLoggedIn(true)
+        }
+        if (areYouLoggedIn === true) {
+            // setLoggedIn("Log Out")
+            console.log("this is true")
+        } else {
+            // setLoggedIn("Log In")
+            console.log("this is false")
+        }
+    }, [areYouLoggedIn, authToken, username])
 
     return (
         <>
@@ -45,10 +57,13 @@ function LogIn({ baseURL }) {
                     />
                 </>
 
-                <button type="submit" onClick={(event) => handleSubmit(event)}>{""} Log In</button>
-
+                <button type="submit" onClick={(event) => handleSubmit(event)}> {""} Log In</button>
+                {areYouLoggedIn && (
+                    <Navigate to="/home" />
+                )}
             </form>
             {error && <div>{error}</div>}
+
         </>
     );
 }
