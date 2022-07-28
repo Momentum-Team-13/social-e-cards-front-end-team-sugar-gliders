@@ -1,41 +1,44 @@
 import React, { useEffect } from "react";
 import NavigationLink from "./nav-link";
 import { useState } from "react";
+// import { AddCard } from "./create-card";
+import Card from "./card";
 
 function Navigation({ areYouLoggedIn }) {
-    const [loggedIn, setLoggedIn] = useState("Log In")
+  const [loggedIn, setLoggedIn] = useState("Log In");
 
-    useEffect(() => {
-        if (areYouLoggedIn === true) {
-            setLoggedIn("Log Out")
-            console.log("this is true")
-        } else {
-            setLoggedIn("Log In")
-            console.log("this is false")
-        }
-    }, [areYouLoggedIn])
+  useEffect(() => {
+    if (areYouLoggedIn === true) {
+      setLoggedIn("Log Out");
+      console.log("this is true");
+    } else {
+      setLoggedIn("Log In");
+      console.log("this is false");
+    }
+  }, [areYouLoggedIn]);
 
-    return (
+  return (
+    <>
+      <h1>HELLO AGAIN haha</h1>
+      {areYouLoggedIn ? (
         <>
-            <h1>HELLO AGAIN haha</h1>
-            {areYouLoggedIn ? (
-                <>
-                    <NavigationLink text="Profile " link="/auth/users/me/" />
-                    <NavigationLink text="Create Cards " link="/create-card/" />
-                    <NavigationLink text="Log Out" link="/auth/token/logout/" />
-                </>
-            ) : (
-                <>
-                    <NavigationLink text="Log In" link="/auth/token/login/" />
-                    <NavigationLink text="Create Account" link="/auth/users/" />
-                </>
-            )
-            }
+          <NavigationLink text="Profile " link="/auth/users/me/" />
+          <NavigationLink text="Create Cards " link="/card/" />
+          {/* <AddCard /> */}
+          <Card />
+          <NavigationLink text="Log Out" link="/auth/token/logout/" />
         </>
-    );
+      ) : (
+        <>
+          <NavigationLink text="Log In" link="/auth/token/login/" />
+          <NavigationLink text="Create Account" link="/auth/users/" />
+        </>
+      )}
+    </>
+  );
 }
 
-export default Navigation
+export default Navigation;
 
 // function Navigation() {
 //     const [loggedIn, setLoggedIn] = useState("Log In")
@@ -64,4 +67,3 @@ export default Navigation
 // }
 
 // export default Navigation
-
