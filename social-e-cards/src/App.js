@@ -1,6 +1,7 @@
 import { BrowserRouter } from "react-router-dom";
 import React from 'react';
 import Pages from './pages';
+import Navigation from "./components/navigation";
 
 
 function App() {
@@ -8,11 +9,10 @@ function App() {
     return (
         <BrowserRouter>
             <Pages />
-            {/* <Navigation baseURL={baseURL} areYouLoggedIn={false} /> */}
+            <Navigation areYouLoggedIn={false} />
         </BrowserRouter>
     );
 }
-
 export default App;
 
 
