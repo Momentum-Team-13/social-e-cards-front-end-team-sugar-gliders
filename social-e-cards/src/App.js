@@ -1,15 +1,20 @@
-import './App.css';
-import Navigation from './components/navigation';
-import Profile from './components/profile';
+import { BrowserRouter } from "react-router-dom";
+import React from 'react';
+import Pages from './pages';
+import Navigation from "./components/navigation";
+
 
 function App() {
-  return (
-    <div className="App">
-      <h1>HELLO PEOPLE</h1>
-      <Navigation areYouLoggedIn={false} />
-      <Profile />
-    </div>
-  );
-}
 
+    return (
+        <BrowserRouter>
+            <Pages />
+            <Navigation areYouLoggedIn={false} />
+        </BrowserRouter>
+    );
+}
 export default App;
+
+
+// if not logged in 
+// if !token, return navigate to ="/login"

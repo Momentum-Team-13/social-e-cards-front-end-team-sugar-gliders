@@ -1,8 +1,11 @@
 import React, { useEffect } from "react";
-import NavigationLink from "./nav-link";
+// import NavigationLink from "./nav-link";
 import { useState } from "react";
+import LogIn from "./logIn";
+import NewUser from "./newUser";
+import { Link } from "react-router-dom"
 
-function Navigation({ areYouLoggedIn }) {
+function Navigation({ areYouLoggedIn, baseURL }) {
     const [loggedIn, setLoggedIn] = useState("Log In")
 
     useEffect(() => {
@@ -17,17 +20,41 @@ function Navigation({ areYouLoggedIn }) {
 
     return (
         <>
-            <h1>HELLO AGAIN haha</h1>
             {areYouLoggedIn ? (
                 <>
-                    <NavigationLink text="Profile " link="/auth/users/me/" />
+                    <button>
+                        <Link to={"/home"}>Home</Link>
+                    </button>
+                    <button>
+                        <Link to={"/profile"}>Profile</Link>
+                    </button>
+                    <button>
+                        <Link to={"/createCard"}>Create Cards</Link>
+                    </button>
+                    <button>
+                        <Link to={"/follower"}>Following</Link>
+                    </button>
+                    {/* <NavigationLink text="Profile " link="/auth/users/me/" />
                     <NavigationLink text="Create Cards " link="/create-card/" />
-                    <NavigationLink text="Log Out" link="/auth/token/logout/" />
+                    <NavigationLink text="Log Out" link="/auth/token/logout/" /> */}
+                    {/* cards from all, people you follow, ones youve made*/}
                 </>
             ) : (
                 <>
-                    <NavigationLink text="Log In" link="/auth/token/login/" />
-                    <NavigationLink text="Create Account" link="/auth/users/" />
+                    <button>
+                        <Link to={"/home"}>Home</Link>
+                    </button>
+                    <button>
+                        <Link to={"/logIn"}>Log In</Link>
+                    </button>
+                    <button>
+                        <Link to={"/newUser"}>Create User</Link>
+                    </button>
+                    {/* <LogIn baseURL={baseURL} /> */}
+                    {/* <NewUser baseURL={baseURL} /> */}
+                    {/* cards from all*/}
+                    {/* <NavigationLink text="Log In" link="/auth/token/login/" /> */}
+                    {/* <NavigationLink text="Create Account" link="/auth/users/" /> */}
                 </>
             )
             }
