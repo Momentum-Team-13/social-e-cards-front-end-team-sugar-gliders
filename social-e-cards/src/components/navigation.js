@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import NavigationLink from "./nav-link";
 import { useState } from "react";
-import LogIn from "./log-in";
+import LogIn from "./logIn";
+import NewUser from "./newUser";
 
 function Navigation({ areYouLoggedIn, baseURL }) {
     const [loggedIn, setLoggedIn] = useState("Log In")
@@ -24,12 +25,15 @@ function Navigation({ areYouLoggedIn, baseURL }) {
                     <NavigationLink text="Profile " link="/auth/users/me/" />
                     <NavigationLink text="Create Cards " link="/create-card/" />
                     <NavigationLink text="Log Out" link="/auth/token/logout/" />
+                    {/* cards from all, people you follow, ones youve made*/}
                 </>
             ) : (
                 <>
                     <LogIn baseURL={baseURL} />
+                    <NewUser baseURL={baseURL} />
+                    {/* cards from all*/}
                     {/* <NavigationLink text="Log In" link="/auth/token/login/" /> */}
-                    <NavigationLink text="Create Account" link="/auth/users/" />
+                    {/* <NavigationLink text="Create Account" link="/auth/users/" /> */}
                 </>
             )
             }
