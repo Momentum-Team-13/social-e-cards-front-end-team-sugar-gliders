@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navigation from "./navigation";
+import 'bulma/css/bulma.min.css';
 
 function NewUser(baseURL) {
     const returnHome = useNavigate()
@@ -20,7 +21,8 @@ function NewUser(baseURL) {
             .then((res) => {
                 console.log(res)
                 localStorage.setItem("log in", "true");
-                returnHome({ baseURL })
+                setAuthToken(res.data.auth_token)
+                returnHome("/home/")
             })
             .catch((res) => {
                 let username_error = res.response.data.username;
@@ -40,7 +42,8 @@ function NewUser(baseURL) {
     };
     return (
         <>
-            <h1>add new users</h1>
+            <h1>Add New User</h1>
+            <br />
             <div>
                 <label htmlFor="username"> username</label>
                 <input
@@ -57,11 +60,13 @@ function NewUser(baseURL) {
                     onChange={(event) => setPassword(event.target.value)}
                 />
             </div>
-            <button type="submit" onClick={(event) => handleNewUser(event)}>
+            <br />
+            <button class="button is-primary is-outlined is-rounded is-hovered" type="submit" onClick={(event) => handleNewUser(event)}>
                 {" "}
                 Add User
             </button>
-
+            <br />
+            <br />
             <Navigation />
             {error && <div>{error}</div>}
 
@@ -71,4 +76,3 @@ function NewUser(baseURL) {
 
 export default NewUser
 
-//daniela, poopsickle

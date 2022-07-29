@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Navigation from "./navigation";
+import 'bulma/css/bulma.min.css';
 
 function Profile() {
     return (
