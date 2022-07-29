@@ -22,7 +22,7 @@ function NewUser(baseURL) {
                 console.log(res)
                 localStorage.setItem("log in", "true");
                 setAuthToken(res.data.auth_token)
-                returnHome("/home/")
+                returnHome("/")
             })
             .catch((res) => {
                 let username_error = res.response.data.username;
