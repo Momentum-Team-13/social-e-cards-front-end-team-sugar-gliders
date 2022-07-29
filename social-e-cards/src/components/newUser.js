@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navigation from "./navigation";
+import 'bulma/css/bulma.min.css';
 
 function NewUser() {
     const returnHome = useNavigate()
@@ -20,6 +21,7 @@ function NewUser() {
             .then((res) => {
                 console.log(res)
                 localStorage.setItem("log in", "true");
+                setAuthToken(res.data.auth_token)
                 returnHome("/home/")
             })
             .catch((res) => {
@@ -40,7 +42,8 @@ function NewUser() {
     };
     return (
         <>
-            <h1>add new users</h1>
+            <h1>Add New User</h1>
+            <br />
             {/* <form onSubmit={getAuthToken}> */}
             <div>
                 <label htmlFor="username"> username</label>
@@ -58,11 +61,13 @@ function NewUser() {
                     onChange={(event) => setPassword(event.target.value)}
                 />
             </div>
-            <button type="submit" onClick={(event) => handleNewUser(event)}>
+            <br />
+            <button class="button is-primary is-outlined is-rounded is-hovered" type="submit" onClick={(event) => handleNewUser(event)}>
                 {" "}
                 Add User
             </button>
-            {/* </form> */}
+            <br />
+            <br />
             <Navigation />
             {error && <div>{error}</div>}
 

@@ -1,4 +1,4 @@
-
+import 'bulma/css/bulma.min.css';
 import Navigation from "./navigation";
 
 function Follower() {

@@ -2,6 +2,7 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { Navigate } from "react-router-dom"
 import Navigation from './navigation'
+import 'bulma/css/bulma.min.css';
 
 function LogIn() {
     const [username, setUsername] = useState('')
@@ -57,9 +58,11 @@ function LogIn() {
                         onChange={(event) => setPassword(event.target.value)}
                     />
                 </>
-
+                <br />
+                <br />
                 <button type="submit" onClick={(event) => handleSubmit(event)}> {""} Log In</button>
             </form>
+            <br />
             <Navigation />
             {error && <div>{error}</div>}
             {console.log(areYouLoggedIn)}

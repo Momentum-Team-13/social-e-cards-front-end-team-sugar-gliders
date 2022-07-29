@@ -1,5 +1,6 @@
 import { useLocation } from "react-router-dom";
 import Navigation from "./navigation";
+import 'bulma/css/bulma.min.css';
 
 function Home() {
     const { state } = useLocation()

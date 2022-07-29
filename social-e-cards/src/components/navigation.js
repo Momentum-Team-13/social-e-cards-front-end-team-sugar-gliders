@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom"
 import LogOut from "./logOut";
+import 'bulma/css/bulma.min.css';
 
 function Navigation() {
     const areYouLoggedIn = localStorage.getItem("log in")
