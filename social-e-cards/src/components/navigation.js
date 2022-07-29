@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom"
+import LogOut from "./logOut";
 
 function Navigation() {
     const areYouLoggedIn = localStorage.getItem("log in")
     console.log(areYouLoggedIn)
-
     return (
         <>
             {areYouLoggedIn ? (
@@ -21,9 +21,7 @@ function Navigation() {
                     <button>
                         <Link to={"/follower"}>Following</Link>
                     </button>
-                    <button>
-                        <Link to={"/logOut"}>Log Out?</Link>
-                    </button>
+                    <LogOut />
                 </>
             ) : (
                 <>

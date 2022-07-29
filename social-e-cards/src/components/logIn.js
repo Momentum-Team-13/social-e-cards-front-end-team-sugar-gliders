@@ -16,6 +16,7 @@ function LogIn() {
             .post(`https://sg-ecard-api.herokuapp.com/auth/token/login`, {
                 username: username,
                 password: password,
+                headers: { Authorization: `Token ${authToken}` }
             })
             .then((res) => {
                 setAuthToken(res.data.auth_token);
