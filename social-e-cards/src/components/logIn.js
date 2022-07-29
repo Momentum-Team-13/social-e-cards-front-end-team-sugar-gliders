@@ -64,7 +64,7 @@ function LogIn() {
             {error && <div>{error}</div>}
             {console.log(areYouLoggedIn)}
             {areYouLoggedIn ? (
-                <Navigate to="/home" state={{ areYouLoggedIn }} />)
+                <Navigate to="/" state={{ areYouLoggedIn }} />)
                 : (
                     " "
                 )}

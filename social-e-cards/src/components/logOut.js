@@ -2,11 +2,11 @@
 import { useNavigate } from "react-router-dom"
 
 
-function LogOut() {
+function LogOut({ baseURL }) {
     const returnHome = useNavigate();
     const handleLogOut = () => {
         localStorage.clear();
-        returnHome("/home/");
+        returnHome({ baseURL });
     }
 
     return (

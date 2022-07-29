@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navigation from "./navigation";
 
-function NewUser() {
+function NewUser(baseURL) {
     const returnHome = useNavigate()
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
@@ -20,7 +20,7 @@ function NewUser() {
             .then((res) => {
                 console.log(res)
                 localStorage.setItem("log in", "true");
-                returnHome("/home/")
+                returnHome({ baseURL })
             })
             .catch((res) => {
                 let username_error = res.response.data.username;
@@ -41,7 +41,6 @@ function NewUser() {
     return (
         <>
             <h1>add new users</h1>
-            {/* <form onSubmit={getAuthToken}> */}
             <div>
                 <label htmlFor="username"> username</label>
                 <input
@@ -62,7 +61,7 @@ function NewUser() {
                 {" "}
                 Add User
             </button>
-            {/* </form> */}
+
             <Navigation />
             {error && <div>{error}</div>}
 
