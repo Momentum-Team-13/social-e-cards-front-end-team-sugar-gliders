@@ -6,7 +6,7 @@ function LogOut({ baseURL }) {
     const returnHome = useNavigate();
     const handleLogOut = () => {
         localStorage.clear();
-        returnHome({ baseURL });
+        returnHome("/");
     }
 
     return (

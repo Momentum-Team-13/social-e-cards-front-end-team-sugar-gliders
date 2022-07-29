@@ -5,7 +5,7 @@ import 'bulma/css/bulma.min.css';
 
 
 function App() {
-    let baseURL = 'https://sg-ecard-api.herokuapp.com'
+
     return (
         <BrowserRouter>
             <Pages />
