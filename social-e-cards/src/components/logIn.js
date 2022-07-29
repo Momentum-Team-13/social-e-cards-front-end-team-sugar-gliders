@@ -18,22 +18,19 @@ function LogIn() {
             })
             .then((res) => {
                 setAuthToken(res.data.auth_token);
-                console.log(authToken);
             })
             .catch((res) => {
                 let error = res.response.data.non_field_errors;
                 setError(error);
             })
     }
+
     useEffect(() => {
         if (username && authToken) {
             setAreYouLoggedIn(true)
-        }
-        if (areYouLoggedIn === true) {
-            // setLoggedIn("Log Out")
+            console.log(authToken);
             console.log("this is true")
         } else {
-            // setLoggedIn("Log In")
             console.log("this is false")
         }
     }, [areYouLoggedIn, authToken, username])
@@ -58,12 +55,15 @@ function LogIn() {
                 </>
 
                 <button type="submit" onClick={(event) => handleSubmit(event)}> {""} Log In</button>
-                {areYouLoggedIn && (
-                    <Navigate to="/home" />
-                )}
             </form>
-            {error && <div>{error}</div>}
 
+            {error && <div>{error}</div>}
+            {console.log(areYouLoggedIn)}
+            {areYouLoggedIn ? (
+                <Navigate to="/home" />)
+                : (
+                    " "
+                )}
         </>
     );
 }

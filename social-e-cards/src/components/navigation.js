@@ -1,27 +1,8 @@
-import React, { useEffect } from "react";
-// import NavigationLink from "./nav-link";
-import { useState } from "react";
-import LogIn from "./logIn";
-import NewUser from "./newUser";
+import React, { useState } from "react";
 import { Link } from "react-router-dom"
 
-function Navigation({ areYouLoggedIn }) {
+function Navigation(areYouLoggedIn) {
     // const [areYouLoggedIn, setAreYouLoggedIn] = useState(false)
-
-    // if (username && authToken) {
-    //     setAreYouLoggedIn(true)
-    // }
-
-    // useEffect(() => {
-    //     if (areYouLoggedIn === true) {
-    //         // setLoggedIn("Log Out")
-    //         console.log("this is true")
-    //     } else {
-    //         // setLoggedIn("Log In")
-    //         console.log("this is false")
-    //     }
-    // }, [areYouLoggedIn])
-
     return (
         <>
             {areYouLoggedIn ? (
