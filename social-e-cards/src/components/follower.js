@@ -1,6 +1,12 @@
+
+import Navigation from "./navigation";
+
 function Follower() {
     return (
-        <h1>Someone You Follow</h1>
+        <>
+            <h1>Someone You Follow</h1>
+            <Navigation />
+        </>
     );
 }
 

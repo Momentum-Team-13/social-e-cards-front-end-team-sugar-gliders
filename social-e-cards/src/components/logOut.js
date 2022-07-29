@@ -1,22 +1,30 @@
 // const [token, setToken] = useLocalStorageState('cardToken', null)
 // const [username, setUsername] = useLocalStorageState('card')
 import React, { useState } from "react";
-import useLocalStorageState from "use-local-storage-state";
 import { Routes, Route } from "react-router-dom"
-import axios from "axios"
-import LogIn from "./logIn";
+import axios from "axios";
+import Navigation from "./navigation";
 
-function LogOut({ baseURL, authToken }) {
-    const [token, setToken] = useLocalStorageState('auth_token', null)
-    const [username, setUsername] = useLocalStorageState('username', ' ')
-
-    const setAuth = (username, token) => {
-        setToken(token)
+function LogOut({ authToken, setAuthToken, username }) {
+    const handleSubmitTwo = () => {
+        axios
+            .post("https://sg-ecard-api.herokuapp.com/auth/token/logout/",
+                {},
+                {
+                    headers: {
+                        Authorization: `Token ${authToken}`,
+                    }
+                })
+            .then(() =>
+                setAuthToken(" ", null))
     }
 
     return (
-        <h1>Log Out?
-        </h1>
+        <>
+            <h1>Log Out?</h1>
+            {/* // <button type="submit" onClick={(event) => handleSubmitTwo(event)}> {""} Log In</button> */}
+            <Navigation />
+        </>
     );
 }
 

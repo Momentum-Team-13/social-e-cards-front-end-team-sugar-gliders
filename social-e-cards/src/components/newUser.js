@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import Navigation from "./navigation";
 
 function NewUser({ baseURL }) {
     const [username, setUsername] = useState("")
@@ -53,7 +54,7 @@ function NewUser({ baseURL }) {
                 Add User
             </button>
             {/* </form> */}
-
+            <Navigation />
             {error && <div>{error}</div>}
         </>
     );

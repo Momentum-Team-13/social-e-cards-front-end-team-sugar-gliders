@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { Navigate } from "react-router-dom"
+import Navigation from './navigation'
 
 function LogIn() {
     const [username, setUsername] = useState('')
@@ -28,6 +29,7 @@ function LogIn() {
     useEffect(() => {
         if (username && authToken) {
             setAreYouLoggedIn(true)
+            localStorage.setItem("log in", "true")
             console.log(authToken);
             console.log("this is true")
         } else {
@@ -56,11 +58,11 @@ function LogIn() {
 
                 <button type="submit" onClick={(event) => handleSubmit(event)}> {""} Log In</button>
             </form>
-
+            <Navigation />
             {error && <div>{error}</div>}
             {console.log(areYouLoggedIn)}
             {areYouLoggedIn ? (
-                <Navigate to="/home" />)
+                <Navigate to="/home" state={{ areYouLoggedIn }} />)
                 : (
                     " "
                 )}

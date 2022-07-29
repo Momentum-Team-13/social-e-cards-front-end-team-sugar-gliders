@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom"
 
-function Navigation(areYouLoggedIn) {
-    // const [areYouLoggedIn, setAreYouLoggedIn] = useState(false)
+function Navigation() {
+    const areYouLoggedIn = localStorage.getItem("log in")
+    console.log(areYouLoggedIn)
+
     return (
         <>
             {areYouLoggedIn ? (
