@@ -1,9 +1,8 @@
-import axios from 'axios'
-import { useState } from 'react'
-import { useNavigate } from "react-router-dom"
-import Navigation from './navigation'
 
-function LogOut({ state, username, setUsername, password, setPassword, authToken, setAuthToken, error, setError, areYouLoggedIn, setAreYouLoggedIn }) {
+import { useNavigate } from "react-router-dom"
+
+
+function LogOut() {
     const returnHome = useNavigate();
     const handleLogOut = () => {
         localStorage.clear();

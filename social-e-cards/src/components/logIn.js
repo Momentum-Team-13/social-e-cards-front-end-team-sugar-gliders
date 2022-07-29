@@ -20,6 +20,7 @@ function LogIn() {
             })
             .then((res) => {
                 setAuthToken(res.data.auth_token);
+                console.log(res.data.auth_token);
             })
             .catch((res) => {
                 let error = res.response.data.non_field_errors;

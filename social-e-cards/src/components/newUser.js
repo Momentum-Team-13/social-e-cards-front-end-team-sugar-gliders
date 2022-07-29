@@ -1,19 +1,27 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Navigation from "./navigation";
 
-function NewUser({ baseURL }) {
+function NewUser() {
+    const returnHome = useNavigate()
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
+    const [authToken, setAuthToken] = useState('')
     const [error, setError] = useState([])
     const handleNewUser = (event) => {
         event.preventDefault();
         axios
-            .post(`${baseURL}auth/users/`, {
+            .post(`https://sg-ecard-api.herokuapp.com/auth/users/`, {
                 username: username,
                 password: password,
+                headers: { Authorization: `Token ${authToken}` }
             })
-            .then((res) => console.log(res))
+            .then((res) => {
+                console.log(res)
+                localStorage.setItem("log in", "true");
+                returnHome("/home/")
+            })
             .catch((res) => {
                 let username_error = res.response.data.username;
                 let password_error = res.response.data.password;
@@ -28,6 +36,7 @@ function NewUser({ baseURL }) {
                     }
                 }
             });
+
     };
     return (
         <>
@@ -56,8 +65,11 @@ function NewUser({ baseURL }) {
             {/* </form> */}
             <Navigation />
             {error && <div>{error}</div>}
+
         </>
     );
 }
 
 export default NewUser
+
+//daniela, poopsickle
