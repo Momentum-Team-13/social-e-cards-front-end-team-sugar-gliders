@@ -11,7 +11,7 @@ import Profile from "./components/profile"
 function Pages() {
   return (
     <Routes>
-      <Route path="/home/" element={<Home />} />
+      <Route path="/" element={<Home />} />
       <Route path="/newUser/" element={<NewUser />} />
       <Route path="/logIn/" element={<LogIn />} />
       <Route path="/profile/" element={<Profile />} />

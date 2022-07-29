@@ -11,7 +11,7 @@ function Navigation() {
             {areYouLoggedIn ? (
                 <>
                     <button>
-                        <Link to={"/home"}>Home</Link>
+                        <Link to={"/"}>Home</Link>
                     </button>
                     <button>
                         <Link to={"/profile"}>Profile</Link>
@@ -27,7 +27,7 @@ function Navigation() {
             ) : (
                 <>
                     <button>
-                        <Link to={"/home"}>Home</Link>
+                        <Link to={"/"}>Home</Link>
                     </button>
                     <button>
                         <Link to={"/logIn"}>Log In</Link>

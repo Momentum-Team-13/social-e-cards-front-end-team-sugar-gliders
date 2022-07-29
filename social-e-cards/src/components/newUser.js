@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Navigation from "./navigation";
 import 'bulma/css/bulma.min.css';
 
-function NewUser() {
+function NewUser(baseURL) {
     const returnHome = useNavigate()
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
@@ -44,7 +44,6 @@ function NewUser() {
         <>
             <h1>Add New User</h1>
             <br />
-            {/* <form onSubmit={getAuthToken}> */}
             <div>
                 <label htmlFor="username"> username</label>
                 <input
@@ -77,4 +76,3 @@ function NewUser() {
 
 export default NewUser
 
-//daniela, poopsickle
