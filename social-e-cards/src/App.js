@@ -9,12 +9,8 @@ function App() {
     return (
         <BrowserRouter>
             <Pages />
-            <Navigation areYouLoggedIn={false} />
+
         </BrowserRouter>
     );
 }
 export default App;
-
-
-// if not logged in 
-// if !token, return navigate to ="/login"

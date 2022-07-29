@@ -1,10 +1,18 @@
-// const [token, setToken] = useLocalStorageState('cardToken', null)
-// const [username, setUsername] = useLocalStorageState('card')
+
+import { useNavigate } from "react-router-dom"
+
 
 function LogOut() {
+    const returnHome = useNavigate();
+    const handleLogOut = () => {
+        localStorage.clear();
+        returnHome("/home/");
+    }
+
     return (
-        <h1>Log Out?
-        </h1>
+        <>
+            <button type="submit" onClick={(event) => handleLogOut(event)}> {""} Log Out</button>
+        </>
     );
 }
 
