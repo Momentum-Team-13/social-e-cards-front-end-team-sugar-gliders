@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import NavigationLink from "./nav-link";
 import { useState } from "react";
 // import { AddCard } from "./create-card";
-import Card from "./card";
 
 function Navigation({ areYouLoggedIn }) {
   const [loggedIn, setLoggedIn] = useState("Log In");
@@ -20,12 +19,11 @@ function Navigation({ areYouLoggedIn }) {
   return (
     <>
       <h1>HELLO AGAIN haha</h1>
+      {/* <Card /> */}
       {areYouLoggedIn ? (
         <>
           <NavigationLink text="Profile " link="/auth/users/me/" />
           <NavigationLink text="Create Cards " link="/card/" />
-          {/* <AddCard /> */}
-          <Card />
           <NavigationLink text="Log Out" link="/auth/token/logout/" />
         </>
       ) : (
