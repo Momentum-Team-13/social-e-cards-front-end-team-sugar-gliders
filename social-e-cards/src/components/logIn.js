@@ -1,31 +1,43 @@
 import axios from "axios";
-import { useState } from "react";
-let baseURL = "https://sg-ecard-api.herokuapp.com/";
+import { useState, useEffect } from "react";
+import { Navigate } from "react-router-dom";
+import Navigation from "./navigation";
 
-function LogIn({}) {
+function LogIn() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [authToken, setAuthToken] = useState("");
   const [error, setError] = useState([]);
+  const [areYouLoggedIn, setAreYouLoggedIn] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
-      .post(`${baseURL}auth/token/login/`, {
+      .post(`https://sg-ecard-api.herokuapp.com/auth/token/login`, {
         username: username,
         password: password,
+        headers: { Authorization: `Token ${authToken}` },
       })
       .then((res) => {
-        let auth_token = res.data.auth_token;
-        setAuthToken(auth_token);
-        console.log(auth_token);
-        localStorage.setItem("auth_token", auth_token);
+        setAuthToken(res.data.auth_token);
+        console.log(res.data.auth_token);
       })
       .catch((res) => {
         let error = res.response.data.non_field_errors;
         setError(error);
       });
   };
+
+  useEffect(() => {
+    if (username && authToken) {
+      setAreYouLoggedIn(true);
+      localStorage.setItem("log in", "true");
+      console.log(authToken);
+      console.log("this is true");
+    } else {
+      console.log("this is false");
+    }
+  }, [areYouLoggedIn, authToken, username]);
 
   return (
     <>
@@ -49,10 +61,14 @@ function LogIn({}) {
         </>
 
         <button type="submit" onClick={(event) => handleSubmit(event)}>
+          {" "}
           {""} Log In
         </button>
       </form>
+      <Navigation />
       {error && <div>{error}</div>}
+      {console.log(areYouLoggedIn)}
+      {areYouLoggedIn ? <Navigate to="/" state={{ areYouLoggedIn }} /> : " "}
     </>
   );
 }

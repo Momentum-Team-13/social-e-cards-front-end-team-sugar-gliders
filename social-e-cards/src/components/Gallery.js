@@ -2,7 +2,7 @@ import Card from "./Card";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import "./Card.css";
-let Token = localStorage.getItem("auth_token");
+// let Token = localStorage.getItem("auth_token");
 
 const Gallery = () => {
   const [cards, setCards] = useState(null);
@@ -12,7 +12,7 @@ const Gallery = () => {
       .get("https://sg-ecard-api.herokuapp.com/ecards/", {
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Token ${Token}`,
+          // Authorization: `Token ${Token}`,
         },
       })
       .then((res) => setCards(res.data));

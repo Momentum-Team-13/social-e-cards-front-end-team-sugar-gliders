@@ -1,8 +1,8 @@
 import axios from "axios";
-import { useState } from "react";
+import React, { useState } from "react";
 let Token = localStorage.getItem("auth_token");
 export default function CreateCard() {
-  //   const [image, setImage] = useState("");
+  const [image, setImage] = useState("");
   const [inmessage, setInnerMessage] = useState("");
   const [outmessage, setOuterMessage] = useState("");
   const [color, setColor] = useState("");
@@ -32,7 +32,6 @@ export default function CreateCard() {
   //         card_owner: 3,
   //       }
   //   ]
-
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("inner message", inmessage);
@@ -42,11 +41,10 @@ export default function CreateCard() {
       .post(
         "https://sg-ecard-api.herokuapp.com/ecards/",
         {
-          card_color_list: "00FF00",
+          card_color_list: color,
           card_inner_message: inmessage,
           card_outer_message: outmessage,
-          card_image: "test card image",
-          card_owner: 1,
+          card_image: image,
         },
         {
           headers: {
@@ -60,7 +58,7 @@ export default function CreateCard() {
         setInnerMessage("");
         setOuterMessage("");
         setColor("");
-        // setImage("");
+        setImage("");
         // setMsgfont("");
         return res;
       });
@@ -102,6 +100,8 @@ export default function CreateCard() {
               onChange={(e) => setOuterMessage(e.target.value)}
             />
           </div>
+          <img className="image" src={"library.png"} alt="image" />
+          <br />
           <button type="submit" id="submit">
             Done!
           </button>
