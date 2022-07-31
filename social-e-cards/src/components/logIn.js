@@ -10,6 +10,7 @@ function LogIn() {
     const [authToken, setAuthToken] = useState('')
     const [error, setError] = useState([])
     const [areYouLoggedIn, setAreYouLoggedIn] = useState(false)
+    const [data, setData] = useState("")
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -20,8 +21,10 @@ function LogIn() {
                 headers: { Authorization: `Token ${authToken}` }
             })
             .then((res) => {
+                console.log(res)
+                localStorage.setItem("auth_token", res.data.auth_token);
+                setData(res);
                 setAuthToken(res.data.auth_token);
-                console.log(res.data.auth_token);
             })
             .catch((res) => {
                 let error = res.response.data.non_field_errors;
@@ -34,7 +37,9 @@ function LogIn() {
             setAreYouLoggedIn(true)
             localStorage.setItem("log in", "true")
             console.log(authToken);
+            console.log(areYouLoggedIn)
             console.log("this is true")
+            console.log(data)
         } else {
             console.log("this is false")
         }
@@ -42,6 +47,12 @@ function LogIn() {
 
     return (
         <>
+            <br />
+            <h1 className="app-name">Gliding Sugar Cards</h1>
+            <br />
+
+            <Navigation />
+            <br />
             <h1>Log in form </h1>
             <label htmlFor='username'>Username</label>
             <input type="text"
@@ -66,6 +77,7 @@ function LogIn() {
             <Navigation />
             {error && <div>{error}</div>}
             {console.log(areYouLoggedIn)}
+
             {areYouLoggedIn ? (
                 <Navigate to="/" state={{ areYouLoggedIn }} username={{ username }} />)
                 : (

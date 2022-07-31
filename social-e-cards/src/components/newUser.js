@@ -42,6 +42,11 @@ function NewUser(baseURL) {
     };
     return (
         <>
+            <br />
+            <h1 className="app-name">Gliding Sugar Cards</h1>
+            <br />
+            <Navigation />
+            <br />
             <h1>Add New User</h1>
             <br />
             <div>
@@ -67,7 +72,9 @@ function NewUser(baseURL) {
             </button>
             <br />
             <br />
+            <br />
             <Navigation />
+            <br />
             {error && <div>{error}</div>}
 
         </>

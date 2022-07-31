@@ -1,7 +1,7 @@
 import Card from "./completeCard";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import "./Card.css";
+import "./css/card.css"
 import Navigation from "./navigation"
 let Token = localStorage.getItem("auth_token");
 
@@ -20,31 +20,43 @@ const Gallery = () => {
     }, [setCards]);
 
     return (
-        <div className="gallery_container">
-            <header className="App-header">
-                <h1>Welcome Greeter!!</h1>
-            </header>
-            {cards &&
-                cards.map((card) => {
-                    return (
-                        <div className="cards_container">
-                            <div className="card_grid">
-                                <Card
-                                    key={card.pk}
-                                    color={card.card_color_list}
-                                    // msgfont={card.outer_font}
-                                    outmessage={card.card_outer_message}
-                                    inmessage={card.card_inner_message}
-                                // image={card.image}
-                                // creator={card.author}
-                                // created={card.date_created}
-                                />
-                            </div>
-                        </div>
-                    );
-                })}
+        <>
+            <br />
+            <h1 className="app-name">Gliding Sugar Cards</h1>
+
+            <br />
             <Navigation />
-        </div>
+            <br />
+            <div className="gallery_container">
+                <header className="App-header">
+                    <h1>Welcome Greeter!!</h1>
+
+                </header>
+                <div className="cards_container">
+                    <div className="card_grid">
+                        {cards &&
+                            cards.map((card, index) => {
+                                return (
+                                    <Card
+                                        id={card.id}
+                                        color={card.card_color_list}
+                                        key={index}
+                                        // msgfont={card.outer_font}
+                                        outmessage={card.card_outer_message}
+                                        inmessage={card.card_inner_message}
+                                    // image={card.image}
+                                    // creator={card.author}
+                                    // created={card.date_created}
+                                    />
+                                );
+                            })}
+                    </div>
+                </div>
+            </div>
+            <br />
+            <Navigation />
+            <br />
+        </>
     );
 };
 

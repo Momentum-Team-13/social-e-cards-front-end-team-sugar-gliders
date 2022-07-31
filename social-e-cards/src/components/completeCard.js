@@ -1,17 +1,21 @@
 import React, { useState, useRef } from "react";
-import "./Card.css";
+import "./css/card.css"
 import Navigation from "./navigation";
 // import ReactCardFlip from "react-card-flip";
+
 // adding comment
 const Card = (props) => {
-    const { key, color, outmessage, inmessage } = props;
+    const { id, color, index, outmessage, inmessage } = props;
     const [flip, setFlip] = useState(false);
     const frontEl = useRef();
     const backEl = useRef();
     return (
         <>
-            <div className="card" id={key}>
-                <div classname={`${color}`}>
+            <br />
+            <Navigation />
+            <br />
+            <div className="card" id={id} key={index}>
+                <div className={`${color}`}>
                     <div
                         className={`card ${flip ? "flip" : ""}`}
                         onClick={() => setFlip(!flip)}
@@ -26,7 +30,7 @@ const Card = (props) => {
                     </div>
                 </div>
             </div>
-            <Navigation />
+            <Navigation className="bottom-nav" />
         </>
     );
 };

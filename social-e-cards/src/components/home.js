@@ -2,10 +2,13 @@ import { useLocation } from "react-router-dom";
 import Navigation from "./navigation";
 import 'bulma/css/bulma.min.css';
 
-function Home(areYouLoggedIn) {
+function Home({ areYouLoggedIn }, { auth_token }) {
     const { state } = useLocation()
+    const token = auth_token
     // const person = username
     console.log(state)
+    console.log(areYouLoggedIn)
+    console.log(token)
     // console.log(person)
     return (
         <>
@@ -43,6 +46,9 @@ function Home(areYouLoggedIn) {
                 </div>
             )}
             {/* <h1>Logged in as {person} </h1> */}
+            <br />
+            <Navigation />
+            <br />
         </>
     );
 }

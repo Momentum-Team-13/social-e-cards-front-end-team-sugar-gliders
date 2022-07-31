@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useState } from "react";
 import Navigation from "./navigation";
+import { TwitterPicker } from "react-color";
+import rgbHex from "rgb-hex";
 let Token = localStorage.getItem("auth_token");
 export default function CreateCard() {
     //   const [image, setImage] = useState("");
@@ -40,6 +42,12 @@ export default function CreateCard() {
 
     return (
         <>
+            <br />
+            <h1 className="app-name">Gliding Sugar Cards</h1>
+
+            <br />
+            <Navigation />
+            <br />
             <div className="addcard">
                 <div id="preview">
                     <h2>Card Preview</h2>
@@ -51,6 +59,11 @@ export default function CreateCard() {
             </div>
             <div id="cardform">
                 <h2>Customize your card!</h2>
+                <TwitterPicker
+                    color={color}
+                    onChangeComplete={(c) => setColor(rgbHex(c.rgb.r, c.rgb.g, c.rgb.b))}
+                />
+                <p>You picked {color}</p>
                 <form onSubmit={handleSubmit} id="add-card">
                     <div className="input-field" id="card-message-field">
                         <label htmlFor="message">Inner Message:</label>

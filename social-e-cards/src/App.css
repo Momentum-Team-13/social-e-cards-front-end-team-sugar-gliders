@@ -21,6 +21,8 @@
   width: auto;
 }
 
+
+
 .nav {
   width: 100px;
   height: 50px;
@@ -34,4 +36,9 @@
 button:hover {
   color: black;
 
+}
+
+body {
+  background-color: aqua;
+  height: 500px;
 }

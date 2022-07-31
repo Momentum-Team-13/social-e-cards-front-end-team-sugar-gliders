@@ -7,6 +7,7 @@ import LogIn from "./components/logIn"
 import LogOut from "./components/logOut"
 import NewUser from "./components/newUser"
 import Profile from "./components/profile"
+import Gallery from "./components/galleryCards";
 
 function Pages() {
   return (
@@ -16,6 +17,7 @@ function Pages() {
       <Route path="/logIn/" element={<LogIn />} />
       <Route path="/profile/" element={<Profile />} />
       <Route path="/createCard/" element={<CreateCard />} />
+      <Route path="/gallery/" element={<Gallery />} />
       <Route path="/logOut/" element={<LogOut />} />
       <Route path="/follower/" element={<Follower />} />
     </Routes>

@@ -5,11 +5,11 @@ import 'bulma/css/bulma.min.css';
 import "./App.css";
 
 
-function App(state) {
+function App() {
 
     return (
         <BrowserRouter>
-            <Pages state={state} />
+            <Pages />
         </BrowserRouter>
     );
 }

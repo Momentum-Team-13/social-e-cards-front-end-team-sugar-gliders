@@ -21,6 +21,9 @@ function Navigation(state) {
                             <Link to={"/createCard"}>Create Cards</Link>
                         </button>
                         <button className="nav">
+                            <Link to={"/gallery/"}>Gallery</Link>
+                        </button>
+                        <button className="nav">
                             <Link to={"/follower"}>Following</Link>
                         </button>
                         <LogOut />

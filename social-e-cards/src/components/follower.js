@@ -58,6 +58,13 @@ function Follower({ baseURL, authToken, username }) {
 
     return (
         <>
+
+            <br />
+            <h1 className="app-name">Gliding Sugar Cards</h1>
+
+            <br />
+            <Navigation />
+            <br />
             <h1>Who You Follow</h1>
             <br />
             {/* <button onClick={(event) => getUserInfo(event)}>Click to see more</button> */}
