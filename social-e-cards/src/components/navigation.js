@@ -2,8 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom"
 import LogOut from "./logOut";
 import 'bulma/css/bulma.min.css';
+import Profile from "./profile";
 
-function Navigation(state) {
+function Navigation({ state, handlePersonalProfile }) {
     const areYouLoggedIn = localStorage.getItem("log in")
     console.log(areYouLoggedIn)
     return (

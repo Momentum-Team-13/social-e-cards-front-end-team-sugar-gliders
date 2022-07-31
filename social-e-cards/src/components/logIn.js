@@ -142,7 +142,6 @@ function LogIn({ auth }, { setAuth }) {
             <Navigation />
             {error && <div>{error}</div>}
             {console.log(areYouLoggedIn)}
-
             {areYouLoggedIn ? (
                 <Navigate to="/" state={{ areYouLoggedIn }} username={{ username }} />)
                 : (
