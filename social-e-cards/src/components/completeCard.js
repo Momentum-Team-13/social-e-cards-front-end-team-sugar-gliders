@@ -4,7 +4,7 @@ import Navigation from "./navigation";
 // import ReactCardFlip from "react-card-flip";
 
 // adding comment
-const Card = (props) => {
+export default function Card(props) {
     const { id, color, index, outmessage, inmessage } = props;
     const [flip, setFlip] = useState(false);
     const frontEl = useRef();
@@ -34,5 +34,3 @@ const Card = (props) => {
         </>
     );
 };
-
-export default Card;
