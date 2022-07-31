@@ -2,9 +2,11 @@ import { useLocation } from "react-router-dom";
 import Navigation from "./navigation";
 import 'bulma/css/bulma.min.css';
 
-function Home() {
+function Home({ username }) {
     const { state } = useLocation()
+    const person = username
     console.log(state)
+    console.log(person)
     return (
         <>
             <br />
@@ -29,6 +31,7 @@ function Home() {
                 " "
             )
             }
+            <h1>Logged in as {person} </h1>
             <Navigation />
         </>
     );
