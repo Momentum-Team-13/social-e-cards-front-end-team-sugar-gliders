@@ -3,6 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import "./css/card.css";
 import Navigation from "./navigation";
+import "bulma/css/bulma.min.css";
 let token = localStorage.getItem("auth_token");
 
 const Gallery = () => {

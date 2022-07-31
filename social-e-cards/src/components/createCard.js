@@ -3,6 +3,7 @@ import { useState } from "react";
 import Navigation from "./navigation";
 import { TwitterPicker } from "react-color";
 import rgbHex from "rgb-hex";
+import "bulma/css/bulma.min.css";
 let Token = localStorage.getItem("auth_token");
 console.log(Token);
 export default function CreateCard() {
