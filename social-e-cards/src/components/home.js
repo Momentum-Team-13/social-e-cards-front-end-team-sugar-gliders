@@ -12,11 +12,13 @@ function Home(areYouLoggedIn) {
             <br />
             <h1 className="app-name">Gliding Sugar Cards</h1>
             <br />
+            <Navigation />
+            <br />
             <h3 className="card-preview">See All Created Cards</h3>
             {/* preview of some cards
             button to navigate to all created cards  */}
             <br />
-            {areYouLoggedIn ? (
+            {state ? (
                 <div>
                     <h3 className="card-preview">See All Cards from People you Follow</h3>
                     {/* preview of some cards
@@ -31,8 +33,16 @@ function Home(areYouLoggedIn) {
                 " "
             )
             }
+            {state ? (
+                <div>
+                    <h1>hello</h1>
+                </div>
+            ) : (
+                <div>
+                    <h1>goodbye</h1>
+                </div>
+            )}
             {/* <h1>Logged in as {person} </h1> */}
-            <Navigation />
         </>
     );
 }

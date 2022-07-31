@@ -10,6 +10,7 @@
   height: 150px;
   color: white;
   text-align: center;
+  border: black 2px solid;
 }
 
 .navigation-bar {

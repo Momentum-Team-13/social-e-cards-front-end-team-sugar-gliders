@@ -2,7 +2,8 @@ import 'bulma/css/bulma.min.css';
 import { useNavigate } from "react-router-dom"
 
 
-function LogOut({ baseURL }) {
+
+function LogOut({ baseURL, setState }) {
     const returnHome = useNavigate();
     const handleLogOut = () => {
         localStorage.clear();

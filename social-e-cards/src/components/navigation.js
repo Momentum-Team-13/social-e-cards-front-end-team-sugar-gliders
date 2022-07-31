@@ -9,7 +9,7 @@ function Navigation(state) {
     return (
         <>
             <div className="navigation-bar">
-                {state ? (
+                {areYouLoggedIn ? (
                     <>
                         <button className="nav">
                             <Link to={"/"}>Home</Link>
