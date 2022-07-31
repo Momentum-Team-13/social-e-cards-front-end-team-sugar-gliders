@@ -3,13 +3,13 @@ import { Link } from "react-router-dom"
 import LogOut from "./logOut";
 import 'bulma/css/bulma.min.css';
 
-function Navigation() {
+function Navigation(state) {
     const areYouLoggedIn = localStorage.getItem("log in")
     console.log(areYouLoggedIn)
     return (
         <>
             <div className="navigation-bar">
-                {areYouLoggedIn ? (
+                {state ? (
                     <>
                         <button className="nav">
                             <Link to={"/"}>Home</Link>

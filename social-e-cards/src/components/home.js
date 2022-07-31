@@ -2,11 +2,11 @@ import { useLocation } from "react-router-dom";
 import Navigation from "./navigation";
 import 'bulma/css/bulma.min.css';
 
-function Home({ username }) {
+function Home(areYouLoggedIn) {
     const { state } = useLocation()
-    const person = username
+    // const person = username
     console.log(state)
-    console.log(person)
+    // console.log(person)
     return (
         <>
             <br />
@@ -16,7 +16,7 @@ function Home({ username }) {
             {/* preview of some cards
             button to navigate to all created cards  */}
             <br />
-            {state ? (
+            {areYouLoggedIn ? (
                 <div>
                     <h3 className="card-preview">See All Cards from People you Follow</h3>
                     {/* preview of some cards
@@ -31,7 +31,7 @@ function Home({ username }) {
                 " "
             )
             }
-            <h1>Logged in as {person} </h1>
+            {/* <h1>Logged in as {person} </h1> */}
             <Navigation />
         </>
     );
