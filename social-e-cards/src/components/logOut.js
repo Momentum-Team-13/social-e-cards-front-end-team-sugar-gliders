@@ -11,7 +11,7 @@ function LogOut({ baseURL }) {
 
     return (
         <>
-            <button type="submit" onClick={(event) => handleLogOut(event)}> {""} Log Out</button>
+            <button id='logout' className='nav' type="submit" onClick={(event) => handleLogOut(event)}> {""} Log Out</button>
         </>
     );
 }

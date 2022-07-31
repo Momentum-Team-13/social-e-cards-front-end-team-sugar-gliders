@@ -74,11 +74,13 @@ export default function CreateCard() {
                             onChange={(e) => setOuterMessage(e.target.value)}
                         />
                     </div>
+                    <br />
                     <button type="submit" id="submit">
                         Done!
                     </button>
                 </form>
             </div>
+            <br />
             <Navigation />
         </>
     );
