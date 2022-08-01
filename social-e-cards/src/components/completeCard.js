@@ -2,13 +2,13 @@ import React, { useState, useRef } from "react";
 import "./css/card.css"
 import Navigation from "./navigation";
 import "bulma/css/bulma.min.css";
-import ReactCardFlip from "react-card-flip";
+// import ReactCardFlip from "react-card-flip";
 import "./css/card.css";
 
 // adding comment
 export default function Card(props) {
     const { id, color, index, outmessage, inmessage, img } = props;
-    const [isFlipped, setIsFlipped] = useState(false);
+    // const [isFlipped, setIsFlipped] = useState(false);
     const frontEl = useRef();
     const backEl = useRef();
     console.log(props)
@@ -27,38 +27,38 @@ export default function Card(props) {
             <br />
             {/* <Navigation /> */}
             <br />
-            <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
-                <div
-                    style={CardStyle}
-                    onMouseEnter={() => setIsFlipped((prev) => !prev)}
-                    className="CardFront"
-                >
-                    <div className="card" id={id} key={index}>
-                        <div className={`${color}`}>
-                            <div
-                            // className={`card ${flip ? "flip" : ""}`}
-                            // onClick={() => setFlip(!flip)}
-                            >
-                                <div className="front" ref={frontEl}>
-                                    {inmessage}
-                                </div>
+            {/* <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal"> */}
+            <div
+                style={CardStyle}
+                // onMouseEnter={() => setIsFlipped((prev) => !prev)}
+                className="CardFront"
+            >
+                <div className="card" id={id} key={index}>
+                    <div className={`${color}`}>
+                        <div
+                        // className={`card ${flip ? "flip" : ""}`}
+                        // onClick={() => setFlip(!flip)}
+                        >
+                            <div className="front" ref={frontEl}>
+                                {inmessage}
                             </div>
                         </div>
                     </div>
                 </div>
-                <div
-                    style={CardStyle}
-                    onMouseLeave={() => setIsFlipped((prev) => !prev)}
-                    className="CardBack"
-                >
-                    <div className="back" ref={backEl}>
-                        {outmessage}
-                        <div className="image">
-                            <img src={img} alt="" />
-                        </div>
+            </div>
+            <div
+                style={CardStyle}
+                // onMouseLeave={() => setIsFlipped((prev) => !prev)}
+                className="CardBack"
+            >
+                <div className="back" ref={backEl}>
+                    {outmessage}
+                    <div className="image">
+                        <img src={img} alt="" />
                     </div>
                 </div>
-            </ReactCardFlip>
+            </div>
+            {/* </ReactCardFlip> */}
             {/* <Navigation className="bottom-nav" /> */}
 
         </>
