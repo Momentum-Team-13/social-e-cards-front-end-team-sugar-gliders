@@ -40,5 +40,5 @@ button:hover {
 
 body {
   background-color: aqua;
-  height: 500px;
+  height: max-content;
 }

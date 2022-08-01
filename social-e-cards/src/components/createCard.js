@@ -15,11 +15,14 @@ export default function CreateCard() {
         event.preventDefault();
         console.log("inner message", inmessage);
         console.log("outer message", outmessage);
+        console.log(Token);
+        console.log(color);
         axios
             .get("https://sg-ecard-api.herokuapp.com/auth/users/me/", {
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: `Token ${Token}`,
+
                 },
             })
             .then((res) => {
@@ -33,14 +36,15 @@ export default function CreateCard() {
                 "https://sg-ecard-api.herokuapp.com/ecards/",
                 {
                     //dees each card have a specifc id, and/or does each user get an id
-                    id: userId,
-                    created_at: "2022-07-28T21:42:30.175271Z",
-                    updated_at: "2022-07-28T21:42:30.175310Z",
-                    card_color_list: "#00FF00",
-                    card_color: null,
+                    // id: userId,
+                    // created_at: "2022-07-28T21:42:30.175271Z",
+                    // updated_at: "2022-07-28T21:42:30.175310Z",
+                    // card_color_list: "#00FF00",
+                    // card_color: null,
                     card_inner_message: inmessage,
                     card_outer_message: outmessage,
                     card_image: img,
+                    card_color: color,
                 },
                 {
                     headers: {
@@ -56,10 +60,10 @@ export default function CreateCard() {
                 return res;
             });
     };
-    const onImageChange = (e) => {
-        const [file] = e.target.files;
-        setImg(URL.createObjectURL(file));
-    };
+    // const onImageChange = (e) => {
+    //     const [file] = e.target.files;
+    //     // setImg(URL.createObjectURL(file));
+    // };
 
 
     return (
@@ -109,10 +113,22 @@ export default function CreateCard() {
                         />
                     </div>
                     <div>
+                        <div className="input-field" id="card-image-field">
+                            <label htmlFor="image"> Insert Unsplash URL:</label>
+                            <br />
+                            <input
+                                type="textarea"
+                                value={img}
+                                name="image"
+                                placeholder="Enter URL here!"
+                                onChange={(e) => setImg(e.target.value)}
+                            />
+                        </div>
+                        {/*                         
                         <label htmlFor="message"> Upload an Image:</label>
                         <br />
                         <input type="file" onChange={onImageChange} />
-                        <img src={img} alt="" />
+                        <img src={img} alt="" /> */}
                     </div>
                     <br />
                     <button type="submit" id="submit">
@@ -128,6 +144,8 @@ export default function CreateCard() {
 }
 
 
-
+//card created message upon submit
+//clear image after submit like the inner/outer message 
+//appropriately getting 
 
 

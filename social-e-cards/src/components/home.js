@@ -10,7 +10,7 @@ function Home() {
 
     // console.log(person)
     return (
-        <>
+        <div className="container">
             <br />
             <h1 className="app-name">Gliding Sugar Cards</h1>
             <br />
@@ -21,7 +21,7 @@ function Home() {
             button to navigate to all created cards  */}
             <br />
             {areYouLoggedIn ? (
-                <div>
+                <>
                     <h3 className="card-preview">See All Cards from People you Follow</h3>
                     {/* preview of some cards
             button to navigate to all people you follow  */}
@@ -30,25 +30,25 @@ function Home() {
                     {/* preview of some cards
             button to navigate to all cards you've created  */}
                     <br />
-                </div>
+                </>
             ) : (
                 " "
             )
             }
             {areYouLoggedIn ? (
-                <div>
+                <>
                     <h1>hello</h1>
-                </div>
+                </>
             ) : (
-                <div>
+                <>
                     <h1>goodbye</h1>
-                </div>
+                </>
             )}
             {/* <h1>Logged in as {person} </h1> */}
             <br />
             <Navigation />
             <br />
-        </>
+        </div>
     );
 }
 

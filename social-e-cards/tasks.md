@@ -23,3 +23,6 @@
 - Cards from people you follow
 - Cards you Made
 - Cards from all users 
+
+[]Other
+- fix nav bar with scrolling 

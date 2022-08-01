@@ -11,6 +11,7 @@ export default function Card(props) {
     const [isFlipped, setIsFlipped] = useState(false);
     const frontEl = useRef();
     const backEl = useRef();
+    console.log(props)
 
     const CardStyle = {
         border: "1px solid black",
@@ -18,12 +19,13 @@ export default function Card(props) {
         margin: "20px",
         width: "200px",
         height: "300px",
+        backgroundColor: `#${props.color}`
     };
 
     return (
         <>
             <br />
-            <Navigation />
+            {/* <Navigation /> */}
             <br />
             <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
                 <div
@@ -57,7 +59,7 @@ export default function Card(props) {
                     </div>
                 </div>
             </ReactCardFlip>
-            <Navigation className="bottom-nav" />
+            {/* <Navigation className="bottom-nav" /> */}
 
         </>
     );

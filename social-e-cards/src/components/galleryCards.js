@@ -39,7 +39,7 @@ const Gallery = () => {
                                 return (
                                     <Card
                                         id={card.id}
-                                        color={card.card_color_list}
+                                        color={card.card_color}
                                         key={index}
                                         // msgfont={card.outer_font}
                                         outmessage={card.card_outer_message}
@@ -60,3 +60,6 @@ const Gallery = () => {
     );
 };
 export default Gallery;
+
+//delete navigation from the card component 
+// move 
