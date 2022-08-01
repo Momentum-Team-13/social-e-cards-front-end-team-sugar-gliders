@@ -62,4 +62,4 @@ const Gallery = () => {
 export default Gallery;
 
 //delete navigation from the card component 
-// move 
+// add in who created the card to pass data

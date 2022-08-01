@@ -27,7 +27,7 @@ export default function CreateCard() {
             })
             .then((res) => {
                 setUserId(res.id);
-                console.log(userId);
+                console.log(res);
                 return res;
             });
 
@@ -36,7 +36,8 @@ export default function CreateCard() {
                 "https://sg-ecard-api.herokuapp.com/ecards/",
                 {
                     //dees each card have a specifc id, and/or does each user get an id
-                    // id: userId,
+                    // id: userId, --> card ID is auto created 
+                    // card_owne in API call not working 
                     // created_at: "2022-07-28T21:42:30.175271Z",
                     // updated_at: "2022-07-28T21:42:30.175310Z",
                     // card_color_list: "#00FF00",
@@ -45,6 +46,7 @@ export default function CreateCard() {
                     card_outer_message: outmessage,
                     card_image: img,
                     card_color: color,
+                    // card_owner: "hello",
                 },
                 {
                     headers: {
@@ -146,6 +148,7 @@ export default function CreateCard() {
 
 //card created message upon submit
 //clear image after submit like the inner/outer message 
-//appropriately getting 
+// submit with user id in card create
+//call by user id cards created 
 
 
