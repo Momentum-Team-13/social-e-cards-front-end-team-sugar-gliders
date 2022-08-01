@@ -2,8 +2,10 @@ import Card from "./completeCard";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import "./css/card.css"
-import Navigation from "./navigation"
-let Token = localStorage.getItem("auth_token");
+import Navigation from "./navigation";
+import "bulma/css/bulma.min.css";
+let token = localStorage.getItem("auth_token");
+
 
 const Gallery = () => {
     const [cards, setCards] = useState(null);
@@ -13,7 +15,7 @@ const Gallery = () => {
             .get("https://sg-ecard-api.herokuapp.com/ecards/", {
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: `Token ${Token}`,
+                    Authorization: `Token ${token}`,
                 },
             })
             .then((res) => setCards(res.data));
@@ -23,14 +25,12 @@ const Gallery = () => {
         <>
             <br />
             <h1 className="app-name">Gliding Sugar Cards</h1>
-
             <br />
             <Navigation />
             <br />
             <div className="gallery_container">
                 <header className="App-header">
                     <h1>Welcome Greeter!!</h1>
-
                 </header>
                 <div className="cards_container">
                     <div className="card_grid">
@@ -44,7 +44,7 @@ const Gallery = () => {
                                         // msgfont={card.outer_font}
                                         outmessage={card.card_outer_message}
                                         inmessage={card.card_inner_message}
-                                    // image={card.image}
+                                        image={card.card_image}
                                     // creator={card.author}
                                     // created={card.date_created}
                                     />
@@ -59,5 +59,4 @@ const Gallery = () => {
         </>
     );
 };
-
 export default Gallery;

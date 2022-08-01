@@ -5,25 +5,42 @@ import { TwitterPicker } from "react-color";
 import rgbHex from "rgb-hex";
 let Token = localStorage.getItem("auth_token");
 export default function CreateCard() {
-    //   const [image, setImage] = useState("");
+    const [img, setImg] = useState("");
     const [inmessage, setInnerMessage] = useState("");
     const [outmessage, setOuterMessage] = useState("");
     const [color, setColor] = useState("");
+    const [userId, setUserId] = useState("");
 
     const handleSubmit = (event) => {
         event.preventDefault();
         console.log("inner message", inmessage);
         console.log("outer message", outmessage);
+        axios
+            .get("https://sg-ecard-api.herokuapp.com/auth/users/me/", {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Token ${Token}`,
+                },
+            })
+            .then((res) => {
+                setUserId(res.id);
+                console.log(userId);
+                return res;
+            });
 
         axios
             .post(
                 "https://sg-ecard-api.herokuapp.com/ecards/",
                 {
-                    card_color_list: "00FF00",
+                    //dees each card have a specifc id, and/or does each user get an id
+                    id: userId,
+                    created_at: "2022-07-28T21:42:30.175271Z",
+                    updated_at: "2022-07-28T21:42:30.175310Z",
+                    card_color_list: "#00FF00",
+                    card_color: null,
                     card_inner_message: inmessage,
                     card_outer_message: outmessage,
-                    card_image: "test card image",
-                    card_owner: 1,
+                    card_image: img,
                 },
                 {
                     headers: {
@@ -35,16 +52,20 @@ export default function CreateCard() {
             .then((res) => {
                 setInnerMessage("");
                 setOuterMessage("");
-                setColor("");
+                // setColor("");
                 return res;
             });
     };
+    const onImageChange = (e) => {
+        const [file] = e.target.files;
+        setImg(URL.createObjectURL(file));
+    };
+
 
     return (
         <>
             <br />
             <h1 className="app-name">Gliding Sugar Cards</h1>
-
             <br />
             <Navigation />
             <br />
@@ -87,10 +108,17 @@ export default function CreateCard() {
                             onChange={(e) => setOuterMessage(e.target.value)}
                         />
                     </div>
+                    <div>
+                        <label htmlFor="message"> Upload an Image:</label>
+                        <br />
+                        <input type="file" onChange={onImageChange} />
+                        <img src={img} alt="" />
+                    </div>
                     <br />
                     <button type="submit" id="submit">
                         Done!
                     </button>
+                    <br />
                 </form>
             </div>
             <br />
