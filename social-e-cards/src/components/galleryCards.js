@@ -38,7 +38,7 @@ const Gallery = () => {
                   // msgfont={card.outer_font}
                   outmessage={card.card_outer_message}
                   inmessage={card.card_inner_message}
-                  // image={card.image}
+                  image={card.card_image}
                   // creator={card.author}
                   // created={card.date_created}
                 />

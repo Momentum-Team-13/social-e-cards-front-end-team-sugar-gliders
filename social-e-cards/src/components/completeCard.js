@@ -6,7 +6,7 @@ import ReactCardFlip from "react-card-flip";
 // import ReactCardFlip from "react-card-flip";
 // adding comment
 const Card = (props) => {
-  const { id, color, index, outmessage, inmessage } = props;
+  const { id, color, index, outmessage, inmessage, img } = props;
   const [isFlipped, setIsFlipped] = useState(false);
   const frontEl = useRef();
   const backEl = useRef();
@@ -33,8 +33,7 @@ const Card = (props) => {
               // onClick={() => setFlip(!flip)}
               >
                 <div className="front" ref={frontEl}>
-                  {outmessage}
-                  {/* <img src={image} /> */}
+                  {inmessage}
                 </div>
               </div>
             </div>
@@ -46,7 +45,10 @@ const Card = (props) => {
           className="CardBack"
         >
           <div className="back" ref={backEl}>
-            {inmessage}
+            {outmessage}
+          <div className="image">
+          <img src={img} alt=""/>
+            </div> 
           </div>
         </div>
       </ReactCardFlip>

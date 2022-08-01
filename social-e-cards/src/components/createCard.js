@@ -7,7 +7,7 @@ import "bulma/css/bulma.min.css";
 let Token = localStorage.getItem("auth_token");
 console.log(Token);
 export default function CreateCard() {
-  //   const [image, setImage] = useState("");
+  const [img, setImg] = useState("");
   const [inmessage, setInnerMessage] = useState("");
   const [outmessage, setOuterMessage] = useState("");
   const [color, setColor] = useState("");
@@ -40,11 +40,11 @@ export default function CreateCard() {
           id: userId,
           created_at: "2022-07-28T21:42:30.175271Z",
           updated_at: "2022-07-28T21:42:30.175310Z",
-          card_color_list: color.toUpperCase(),
+          card_color_list: "#00FF00",
           card_color: null,
           card_inner_message: inmessage,
           card_outer_message: outmessage,
-          card_image: "test card image",
+          card_image: img,
         },
         {
           headers: {
@@ -59,6 +59,10 @@ export default function CreateCard() {
         // setColor("");
         return res;
       });
+  };
+  const onImageChange = (e) => {
+    const [file] = e.target.files;
+    setImg(URL.createObjectURL(file));
   };
 
   return (
@@ -101,6 +105,12 @@ export default function CreateCard() {
               placeholder="Give your card a message!"
               onChange={(e) => setOuterMessage(e.target.value)}
             />
+          </div>
+          <div>
+            <label htmlFor="message"> Upload an Image:</label>
+            <br />
+            <input type="file" onChange={onImageChange} />
+            <img src={img} alt="" />
           </div>
           <button type="submit" id="submit">
             Done!
