@@ -40,7 +40,7 @@ function App() {
                 <Route path="/createCard/" element={<CreateCard token={token} username={username} />} />
                 <Route path="/gallery/" element={<Gallery currentUser={username} token={token} />} />
                 <Route path="/logOut/" element={<LogOut setAuth={setAuth} token={token} />} />
-                <Route path="/follower/" element={<Follower currentUser={username} token={token} />} />
+                <Route path="/following/" element={<Follower currentUser={username} token={token} />} />
                 {/* <Route path="login" element={
                     <header>
                         {isLoggedIn ? (

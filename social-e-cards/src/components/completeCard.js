@@ -4,6 +4,7 @@ import Navigation from "./navigation";
 import "bulma/css/bulma.min.css";
 // import ReactCardFlip from "react-card-flip";
 import "./css/card.css";
+import axios from "axios";
 
 // adding comment
 export default function Card(props) {
@@ -11,6 +12,7 @@ export default function Card(props) {
     // const [isFlipped, setIsFlipped] = useState(false);
     const frontEl = useRef();
     const backEl = useRef();
+    let token = localStorage.getItem("auth_token");
     console.log(props)
 
     const CardStyle = {
@@ -22,6 +24,38 @@ export default function Card(props) {
         backgroundColor: `#${props.color}`
     };
 
+    const followRequest = () => {
+        axios
+            .post('https://sg-ecard-api.herokuapp.com/followers/', {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Token${token}`,
+                }
+            })
+    }
+
+
+    const unfollowRequest = () => {
+        axios
+            .delete()
+    }
+
+
+    const deleteCard = (event) => {
+        // event.preventDefault();
+        console.log(event.target.id);
+        axios.delete(
+            `https://sg-ecard-api.herokuapp.com/ecards/${event.target.id}`,
+            {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Token ${token}`,
+                },
+            }
+        );
+        const element = document.getElementById(event.target.id);
+        element.remove();
+    };
     return (
         <>
             <br />
@@ -56,6 +90,11 @@ export default function Card(props) {
                     <div className="image">
                         <img src={img} alt="" />
                     </div>
+                    <button type="submit" id={id} onClick={(event) => deleteCard(event)}>
+                        Delete Card
+                    </button>
+                    {/* <button onClick={() => follow()}>Follow User </button>
+          <button onClick={() => unFollow()}>Unfollow User </button> */}
                 </div>
             </div>
             {/* </ReactCardFlip> */}

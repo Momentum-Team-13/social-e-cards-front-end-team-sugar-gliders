@@ -26,3 +26,7 @@
 
 []Other
 - fix nav bar with scrolling 
+- displaying name of user that created that card
+- click on name to redirect to user + their cards
+- follow button on name take you to profile
+- display who that person follows

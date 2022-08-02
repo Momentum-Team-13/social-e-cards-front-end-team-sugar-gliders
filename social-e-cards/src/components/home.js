@@ -2,7 +2,7 @@ import { useLocation } from "react-router-dom";
 import Navigation from "./navigation";
 import 'bulma/css/bulma.min.css';
 
-function Home() {
+function Home(currentUser) {
     const { state } = useLocation()
     const areYouLoggedIn = localStorage.getItem("log in")
     // const person = username
@@ -37,11 +37,11 @@ function Home() {
             }
             {areYouLoggedIn ? (
                 <>
-                    <h1>hello</h1>
+                    <h1>Currently Logged In :  </h1>
                 </>
             ) : (
                 <>
-                    <h1>goodbye</h1>
+                    <h1>You are Logged Out</h1>
                 </>
             )}
             {/* <h1>Logged in as {person} </h1> */}
