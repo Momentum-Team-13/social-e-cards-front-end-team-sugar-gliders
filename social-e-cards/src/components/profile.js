@@ -3,22 +3,24 @@ import axios from "axios"
 import Navigation from "./navigation";
 import 'bulma/css/bulma.min.css';
 import baseURL from "../App";
+import Card from "./completeCard";
 
-function Profile({ username }, { token }) {
-    // const [follow, setFollow] = useState([]);
-    // const [profileData, setProfileData] = useState([]);
+function Profile() {
+    let token = localStorage.getItem("auth_token");
+    const [myCards, setMyCards] = useState(null);
+    const [followerID, setFollowerID] = useState([]);
 
-    // const handlePersonalProfile = (event) => {
-    //     axios
-    //         .get(`${baseURL}/auth/users/me/`, {
-    //             headers: { Authorization: `Token ${token}` },
-    //         })
-    //         .then((res) => {
-    //             console.log(res);
-    //             setProfileData(res.data);
-    //         })
-    //         .catch((res) => console.log(res));
-    // };
+    useEffect(() => {
+        axios
+            .get("https://sg-ecard-api.herokuapp.com/ecards/?list=me", {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Token ${token}`,
+                },
+            })
+            .then((res) =>
+                setMyCards(res.data));
+    }, [setMyCards, token])
 
     return (
         <>
@@ -32,8 +34,28 @@ function Profile({ username }, { token }) {
             <h1>My Profile</h1>
             <h3>username, email, image, date, ID, name</h3>
             <br />
+            <h3 className="card-preview">
+                See All Cards You've Created
+                {myCards &&
+                    myCards.map((card, index) => {
+                        return (
+                            <Card
+                                id={card.id}
+                                color={card.card_color}
+                                key={index}
+                                // msgfont={card.outer_font}
+                                outmessage={card.card_outer_message}
+                                inmessage={card.card_inner_message}
+                                img={card.card_image}
+                                owner={true}
+                                ownerID={card.card_owner.id}
+                                following={followerID}
+                                followerCardID={card.id}
+                            />
+                        )
+                    })}
+            </h3>
             <div className="bottom-nav">
-
             </div>
             <br />
         </>

@@ -6,6 +6,7 @@ import React, { useEffect, useState } from 'react'
 import axios from "axios"
 import Card from "./completeCard";
 
+
 function Home({ currentUser }) {
     const { state } = useLocation()
     const [followers, setFollowers] = useState([]);

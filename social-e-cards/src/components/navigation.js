@@ -4,6 +4,7 @@ import LogOut from "./logOut";
 import 'bulma/css/bulma.min.css';
 import Profile from "./profile";
 
+
 function Navigation({ state, handlePersonalProfile }) {
     const areYouLoggedIn = localStorage.getItem("log in")
     const username = localStorage.getItem("username")
@@ -21,9 +22,9 @@ function Navigation({ state, handlePersonalProfile }) {
                         <button className="nav">
                             <Link to={"/createCard"}>Create Cards</Link>
                         </button>
-                        <button className="nav">
+                        {/* <button className="nav">
                             <Link to={"/gallery/"}>Gallery</Link>
-                        </button>
+                        </button> */}
                         <button className="nav">
                             <Link to={"/following/"}>Following</Link>
                         </button>
