@@ -25,7 +25,6 @@ export default function Card(props) {
         backgroundColor: `#${props.color}`
     };
 
-
     useEffect(() => {
         axios
             .get('https://sg-ecard-api.herokuapp.com/followers/',
@@ -38,7 +37,6 @@ export default function Card(props) {
             .then((res) => {
                 let array = []
                 res.data.forEach(element => {
-
                     if (element.following === ownerID) {
                         console.log(element.id)
                         setDeleteID(element.id)
@@ -52,15 +50,19 @@ export default function Card(props) {
                 // setError(error);
             })
     }, [token]);
+
     const handleFollowRequest = (event) => {
-        event.preventDefault()
         axios
             .post('https://sg-ecard-api.herokuapp.com/followers/', {
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Token ${token}`,
-                },
-            })
+                following: ownerID
+            },
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Token ${token}`,
+                    },
+                }
+            )
     }
 
     const handleUnfollowRequest = (event) => {
