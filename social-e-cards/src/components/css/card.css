@@ -1,18 +1,18 @@
 .card-grid {
-    display: grid;
-    align-items: center;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 10px;
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
 }
 
 .card {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    border-radius: 0.25rem;
-    box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.3);
-    /* background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.3);
+  /* background-color: white;
     transform-style: preserve-3d;
     transition: 150ms;
     cursor: pointer;
@@ -21,8 +21,12 @@
 }
 
 .card:hover {
-    --translate-y: -2px;
-    box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.5);
+  --translate-y: -2px;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.5);
+}
+img {
+  width: 200px;
+  height: 200px;
 }
 
 /* .card.flip {
