@@ -13,7 +13,7 @@ export default function Card(props) {
     const frontEl = useRef();
     const backEl = useRef();
     let token = localStorage.getItem("auth_token");
-    console.log(ownerID)
+
 
     const CardStyle = {
         border: "1px solid black",
@@ -107,7 +107,7 @@ export default function Card(props) {
                         ) : (
                             ""
                         )}
-                    {following ?
+                    {following.includes(ownerID) ?
                         (<button onClick={() => handleUnfollowRequest()}>Unfollow User </button>)
                         :
                         (<button onClick={() => handleFollowRequest()}>Follow User </button>)

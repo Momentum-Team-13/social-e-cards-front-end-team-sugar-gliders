@@ -121,6 +121,7 @@ function Home({ currentUser }) {
                                         img={card.card_image}
                                         owner={true}
                                         ownerID={card.card_owner.id}
+                                        following={followerID}
                                     />
                                 )
                             })}
