@@ -49,7 +49,7 @@ export default function Card(props) {
                 // console.log(error);
                 // setError(error);
             })
-    }, [token]);
+    }, [currentFollowers, token]);
 
     const handleFollowRequest = (event) => {
         axios
@@ -63,6 +63,13 @@ export default function Card(props) {
                     },
                 }
             )
+            .then(() => {
+                const newFollowers = following.slice(0)
+                newFollowers.push(ownerID)
+                setCurrentFollowers(newFollowers)
+            }
+
+            )
     }
 
     const handleUnfollowRequest = (event) => {
@@ -75,7 +82,6 @@ export default function Card(props) {
             })
             .then(() => {
                 const index = following.indexOf(deleteID)
-                console.log(following)
                 const newFollowers = following.slice(0)
                 newFollowers.splice(index, 1)
                 setCurrentFollowers(newFollowers)
