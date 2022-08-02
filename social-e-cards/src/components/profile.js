@@ -51,6 +51,7 @@ function Profile() {
                                 ownerID={card.card_owner.id}
                                 following={followerID}
                                 followerCardID={card.id}
+                                cardCreator={card.card_owner.username}
                             />
                         )
                     })}

@@ -80,6 +80,7 @@ export default function SeeProfile({ currentUser }) {
                                     following={followerID}
                                     ownerID={card.card_owner.id}
                                     followerCardID={card.id}
+                                    cardCreator={card.card_owner.username}
                                 />
                             );
                         })}
