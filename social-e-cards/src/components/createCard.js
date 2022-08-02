@@ -141,7 +141,7 @@ export default function CreateCard(username) {
                 </form>
             </div>
             <br />
-            <Navigation />
+
         </>
     );
 }

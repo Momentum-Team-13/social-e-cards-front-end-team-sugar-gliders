@@ -1,10 +1,11 @@
 [] Following People
-- axios request to get followers 
-- place data into body of following page
-- add delete user from following (unfollow)
 - button to see profile of person you follow 
+- displaying name of user that created that card
+- click on name to redirect to user + their cards
+- follower count 
+- follower add into home screen when click follow
 
-[] Creating Cards
+[]Edit Cards
 
 [] Profile Component
 - edit profile button 
@@ -19,14 +20,17 @@
 - add image 
 - add email 
 
-[] Views
-- Cards from people you follow
-- Cards you Made
-- Cards from all users 
-
 []Other
-- fix nav bar with scrolling 
-- displaying name of user that created that card
-- click on name to redirect to user + their cards
-- follow button on name take you to profile
+- fix nav bar with scrolling (use sticky)
+
+
+[]Read Me
+- do it
+
+
 - display who that person follows
+- log in to see cards --> make log in landing page 
+- click title of app to redirect home 
+- click button not text for event 
+
+- delete follow on own cards 

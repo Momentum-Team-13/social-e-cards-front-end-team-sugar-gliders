@@ -146,7 +146,7 @@ function Home({ currentUser }) {
             )}
             {/* <h1>Logged in as {person} </h1> */}
             <br />
-            <Navigation />
+
             <br />
         </div>
     );

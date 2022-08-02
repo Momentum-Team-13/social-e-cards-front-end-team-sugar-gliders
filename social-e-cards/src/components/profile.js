@@ -33,7 +33,7 @@ function Profile({ username }, { token }) {
             <h3>username, email, image, date, ID, name</h3>
             <br />
             <div className="bottom-nav">
-                <Navigation />
+
             </div>
             <br />
         </>

@@ -52,8 +52,7 @@ const Gallery = () => {
                     </div>
                 </div>
             </div>
-            <br />
-            <Navigation />
+
             <br />
         </>
     );
