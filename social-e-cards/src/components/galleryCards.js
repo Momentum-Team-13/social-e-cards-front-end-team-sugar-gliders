@@ -7,8 +7,8 @@ import "bulma/css/bulma.min.css";
 
 
 const Gallery = () => {
-    const [cards, setCards] = useState(null);
     let token = localStorage.getItem("auth_token");
+    const [cards, setCards] = useState(null);
 
     useEffect(() => {
         axios
@@ -44,9 +44,8 @@ const Gallery = () => {
                                         // msgfont={card.outer_font}
                                         outmessage={card.card_outer_message}
                                         inmessage={card.card_inner_message}
-                                        image={card.card_image}
-                                    // creator={card.author}
-                                    // created={card.date_created}
+                                        img={card.card_image}
+                                        owner={false}
                                     />
                                 );
                             })}

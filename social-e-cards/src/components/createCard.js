@@ -4,7 +4,7 @@ import Navigation from "./navigation";
 import { TwitterPicker } from "react-color";
 import rgbHex from "rgb-hex";
 let Token = localStorage.getItem("auth_token");
-export default function CreateCard() {
+export default function CreateCard(username) {
     const [img, setImg] = useState("");
     const [inmessage, setInnerMessage] = useState("");
     const [outmessage, setOuterMessage] = useState("");
@@ -13,10 +13,7 @@ export default function CreateCard() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log("inner message", inmessage);
-        console.log("outer message", outmessage);
-        console.log(Token);
-        console.log(color);
+
         axios
             .get("https://sg-ecard-api.herokuapp.com/auth/users/me/", {
                 headers: {
@@ -46,7 +43,7 @@ export default function CreateCard() {
                     card_outer_message: outmessage,
                     card_image: img,
                     card_color: color,
-                    // card_owner: "hello",
+                    card_owner: { username }
                 },
                 {
                     headers: {
@@ -58,7 +55,8 @@ export default function CreateCard() {
             .then((res) => {
                 setInnerMessage("");
                 setOuterMessage("");
-                // setColor("");
+                setImg("");
+                console.log(username.username)
                 return res;
             });
     };
@@ -75,17 +73,20 @@ export default function CreateCard() {
             <br />
             <Navigation />
             <br />
-            <div className="addcard">
+            {/* <div className="addcard">
                 <div id="preview">
                     <h2>Card Preview</h2>
-                    {/* <h3>Title: {title}</h3> */}
+                    <h3>Title: {title}</h3>
                     <div className={`background_block ${color}`}>
-                        {/* <h4>{message}</h4> */}
+                        <h4>{message}</h4>
                     </div>
                 </div>
-            </div>
+            </div> */}
             <div id="cardform">
                 <h2>Customize your card!</h2>
+                <br />
+                <h3>Step 1: Choose a Color:</h3>
+                <br />
                 <TwitterPicker
                     color={color}
                     onChangeComplete={(c) => setColor(rgbHex(c.rgb.r, c.rgb.g, c.rgb.b))}
@@ -93,7 +94,7 @@ export default function CreateCard() {
                 <p>You picked {color}</p>
                 <form onSubmit={handleSubmit} id="add-card">
                     <div className="input-field" id="card-message-field">
-                        <label htmlFor="message">Inner Message:</label>
+                        <label htmlFor="message">Step 2: Write an Inner Message:</label>
                         <br />
                         <input
                             type="textarea"
@@ -104,7 +105,7 @@ export default function CreateCard() {
                         />
                     </div>
                     <div className="input-field" id="card-message-field">
-                        <label htmlFor="message"> Outer Message:</label>
+                        <label htmlFor="message"> Step 3: Write an Outer Message:</label>
                         <br />
                         <input
                             type="textarea"
@@ -116,7 +117,7 @@ export default function CreateCard() {
                     </div>
                     <div>
                         <div className="input-field" id="card-image-field">
-                            <label htmlFor="image"> Insert Unsplash URL:</label>
+                            <label htmlFor="image"> Step 4: Insert Unsplash URL:</label>
                             <br />
                             <input
                                 type="textarea"

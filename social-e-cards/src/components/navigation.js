@@ -6,7 +6,7 @@ import Profile from "./profile";
 
 function Navigation({ state, handlePersonalProfile }) {
     const areYouLoggedIn = localStorage.getItem("log in")
-    console.log(areYouLoggedIn)
+    const username = localStorage.getItem("username")
     return (
         <>
             <div className="navigation-bar">
@@ -25,7 +25,7 @@ function Navigation({ state, handlePersonalProfile }) {
                             <Link to={"/gallery/"}>Gallery</Link>
                         </button>
                         <button className="nav">
-                            <Link to={"/follower"}>Following</Link>
+                            <Link to={"/following/"}>Following</Link>
                         </button>
                         <LogOut />
                     </>
