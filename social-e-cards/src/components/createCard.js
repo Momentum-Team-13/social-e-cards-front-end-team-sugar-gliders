@@ -10,6 +10,8 @@ export default function CreateCard() {
   const [outmessage, setOuterMessage] = useState("");
   const [color, setColor] = useState("");
   const [userId, setUserId] = useState("");
+  const [userName, setUserName] = useState("");
+  const [email, setEmail] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -33,7 +35,13 @@ export default function CreateCard() {
     axios
       .post(
         "https://sg-ecard-api.herokuapp.com/ecards/",
+
         {
+          card_owner: {
+            id: userId,
+            username: userName,
+            email: email,
+          },
           //dees each card have a specifc id, and/or does each user get an id
           // id: userId,
           // card_owne in API call not working
@@ -58,6 +66,8 @@ export default function CreateCard() {
         setInnerMessage("");
         setOuterMessage("");
         // setColor("");
+        setEmail("");
+        setUserName("");
         return res;
       });
   };
