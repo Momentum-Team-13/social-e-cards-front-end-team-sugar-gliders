@@ -73,17 +73,20 @@ export default function CreateCard(username) {
             <br />
             <Navigation />
             <br />
-            <div className="addcard">
+            {/* <div className="addcard">
                 <div id="preview">
                     <h2>Card Preview</h2>
-                    {/* <h3>Title: {title}</h3> */}
+                    <h3>Title: {title}</h3>
                     <div className={`background_block ${color}`}>
-                        {/* <h4>{message}</h4> */}
+                        <h4>{message}</h4>
                     </div>
                 </div>
-            </div>
+            </div> */}
             <div id="cardform">
                 <h2>Customize your card!</h2>
+                <br />
+                <h3>Step 1: Choose a Color:</h3>
+                <br />
                 <TwitterPicker
                     color={color}
                     onChangeComplete={(c) => setColor(rgbHex(c.rgb.r, c.rgb.g, c.rgb.b))}
@@ -91,7 +94,7 @@ export default function CreateCard(username) {
                 <p>You picked {color}</p>
                 <form onSubmit={handleSubmit} id="add-card">
                     <div className="input-field" id="card-message-field">
-                        <label htmlFor="message">Inner Message:</label>
+                        <label htmlFor="message">Step 2: Write an Inner Message:</label>
                         <br />
                         <input
                             type="textarea"
@@ -102,7 +105,7 @@ export default function CreateCard(username) {
                         />
                     </div>
                     <div className="input-field" id="card-message-field">
-                        <label htmlFor="message"> Outer Message:</label>
+                        <label htmlFor="message"> Step 3: Write an Outer Message:</label>
                         <br />
                         <input
                             type="textarea"
@@ -114,7 +117,7 @@ export default function CreateCard(username) {
                     </div>
                     <div>
                         <div className="input-field" id="card-image-field">
-                            <label htmlFor="image"> Insert Unsplash URL:</label>
+                            <label htmlFor="image"> Step 4: Insert Unsplash URL:</label>
                             <br />
                             <input
                                 type="textarea"
