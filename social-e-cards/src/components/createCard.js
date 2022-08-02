@@ -4,7 +4,7 @@ import Navigation from "./navigation";
 import { TwitterPicker } from "react-color";
 import rgbHex from "rgb-hex";
 let Token = localStorage.getItem("auth_token");
-export default function CreateCard() {
+export default function CreateCard(username) {
     const [img, setImg] = useState("");
     const [inmessage, setInnerMessage] = useState("");
     const [outmessage, setOuterMessage] = useState("");
@@ -46,7 +46,7 @@ export default function CreateCard() {
                     card_outer_message: outmessage,
                     card_image: img,
                     card_color: color,
-                    // card_owner: "hello",
+                    card_owner: { username }
                 },
                 {
                     headers: {
@@ -58,7 +58,8 @@ export default function CreateCard() {
             .then((res) => {
                 setInnerMessage("");
                 setOuterMessage("");
-                // setColor("");
+                setImg("");
+                console.log(username.username)
                 return res;
             });
     };
