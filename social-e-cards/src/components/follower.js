@@ -36,7 +36,7 @@ export default function SeeProfile({ currentUser }) {
                 console.log(error);
                 setError(error);
             })
-    }, [token]);
+    }, [setFollowerID, token]);
 
     useEffect(() => {
         axios
@@ -50,7 +50,7 @@ export default function SeeProfile({ currentUser }) {
             .then((res) => {
                 setFollowerCards(res.data)
             })
-    })
+    }, [setFollowerCards, token])
 
     return (
         <>

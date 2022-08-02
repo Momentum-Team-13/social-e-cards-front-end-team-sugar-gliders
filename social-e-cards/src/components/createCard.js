@@ -57,6 +57,7 @@ export default function CreateCard(username) {
                 setOuterMessage("");
                 setImg("");
                 console.log(username.username)
+                // setUserI(username.username)
                 return res;
             });
     };
@@ -94,18 +95,7 @@ export default function CreateCard(username) {
                 <p>You picked {color}</p>
                 <form onSubmit={handleSubmit} id="add-card">
                     <div className="input-field" id="card-message-field">
-                        <label htmlFor="message">Step 2: Write an Inner Message:</label>
-                        <br />
-                        <input
-                            type="textarea"
-                            value={inmessage}
-                            name="message"
-                            placeholder="Give your card a message!"
-                            onChange={(e) => setInnerMessage(e.target.value)}
-                        />
-                    </div>
-                    <div className="input-field" id="card-message-field">
-                        <label htmlFor="message"> Step 3: Write an Outer Message:</label>
+                        <label htmlFor="message">Step 2: Write a Message for the Outside of the Card:</label>
                         <br />
                         <input
                             type="textarea"
@@ -113,6 +103,17 @@ export default function CreateCard(username) {
                             name="message"
                             placeholder="Give your card a message!"
                             onChange={(e) => setOuterMessage(e.target.value)}
+                        />
+                    </div>
+                    <div className="input-field" id="card-message-field">
+                        <label htmlFor="message"> Step 3: Write a Message for the Inside of the Card:</label>
+                        <br />
+                        <input
+                            type="textarea"
+                            value={inmessage}
+                            name="message"
+                            placeholder="Give your card a message!"
+                            onChange={(e) => setInnerMessage(e.target.value)}
                         />
                     </div>
                     <div>

@@ -32,10 +32,10 @@ function Profile() {
             <Navigation />
             <br />
             <h1>My Profile</h1>
-            <h3>username, email, image, date, ID, name</h3>
+            <h3>Your Cards Below</h3>
             <br />
             <h3 className="card-preview">
-                See All Cards You've Created
+                Click on a Card to See Inside Message
                 {myCards &&
                     myCards.map((card, index) => {
                         return (

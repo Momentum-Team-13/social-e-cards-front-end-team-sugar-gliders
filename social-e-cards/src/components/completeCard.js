@@ -3,26 +3,36 @@ import "./css/card.css"
 import Navigation from "./navigation";
 import "bulma/css/bulma.min.css";
 // import ReactCardFlip from "react-card-flip";
-import "./css/card.css";
+
 import axios from "axios";
 
 // adding comment
 export default function Card(props) {
-    const { id, color, index, outmessage, inmessage, img, owner, following, ownerID, followerCardID } = props;
+    const { id, color, index, outmessage, inmessage, img, owner, following, ownerID, followerCardID, userId } = props;
     // const [isFlipped, setIsFlipped] = useState(false);
     const frontEl = useRef();
     const backEl = useRef();
     let token = localStorage.getItem("auth_token");
     const [deleteID, setDeleteID] = useState(null)
     const [currentFollowers, setCurrentFollowers] = useState(following)
+    console.log(ownerID)
 
 
-    const CardStyle = {
-        border: "1px solid black",
+    const CardStyleOutside = {
+        border: "3px solid black",
+        padding: "40px",
+        margin: "20px",
+        width: "300px",
+        height: "150px",
+        backgroundColor: `#${props.color}`
+    };
+
+    const CardStyleInside = {
+        border: "2px solid black",
         padding: "20px",
         margin: "20px",
-        width: "200px",
-        height: "300px",
+        width: "300px",
+        height: "350px",
         backgroundColor: `#${props.color}`
     };
 
@@ -113,7 +123,7 @@ export default function Card(props) {
             <br />
             {/* <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal"> */}
             <div
-                style={CardStyle}
+                style={CardStyleOutside}
                 // onMouseEnter={() => setIsFlipped((prev) => !prev)}
                 className="CardFront"
             >
@@ -124,30 +134,31 @@ export default function Card(props) {
                         // onClick={() => setFlip(!flip)}
                         >
                             <div className="front" ref={frontEl}>
-                                {inmessage}
+                                {outmessage}
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div
-                style={CardStyle}
+                style={CardStyleInside}
                 // onMouseLeave={() => setIsFlipped((prev) => !prev)}
                 className="CardBack"
             >
                 <div className="back" ref={backEl}>
-                    {outmessage}
+                    {inmessage}
                     <div className="image">
                         <img src={img} alt="" />
+                        {userId}
+                        {owner ?
+                            (
+                                <button type="submit" id={id} onClick={(event) => deleteCard(event)}>
+                                    Delete Card
+                                </button>
+                            ) : (
+                                ""
+                            )}
                     </div>
-                    {owner ?
-                        (
-                            <button type="submit" id={id} onClick={(event) => deleteCard(event)}>
-                                Delete Card
-                            </button>
-                        ) : (
-                            ""
-                        )}
                     {currentFollowers.includes(ownerID) ?
                         (<button onClick={() => handleUnfollowRequest()}>Unfollow User </button>)
                         :
