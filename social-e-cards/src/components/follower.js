@@ -4,13 +4,14 @@ import { useEffect, useState } from "react";
 import Navigation from "./navigation";
 import 'bulma/css/bulma.min.css';
 import Card from "./completeCard";
+import Follower from "./peopleFollowing";
 
 export default function SeeProfile({ currentUser }) {
     const [followers, setFollowers] = useState([]);
-    const [followerIndex, setFollowerIndex] = useState(0);
-    const [number, setNumber] = useState([]);
-    const [followerUsername, setFollowerUsername] = useState([])
-    const [error, setError] = useState([]);
+    // const [followerIndex, setFollowerIndex] = useState(0);
+    // const [number, setNumber] = useState([]);
+    // const [followerUsername, setFollowerUsername] = useState([])
+    // const [error, setError] = useState([]);
     let token = localStorage.getItem("auth_token");
     useEffect(() => {
         axios
@@ -24,25 +25,14 @@ export default function SeeProfile({ currentUser }) {
             .then((res) => {
                 setFollowers(res.data)
                 console.log(res.data)
-
             })
             .catch((res) => {
                 // let error = res.response.data.non_field_errors;
                 // console.log(error);
                 // setError(error);
             })
-    }, [setFollowers]);
+    }, [setFollowers, token]);
 
-    function Follower(followers) {
-        console.log(followers)
-        return (
-            <div className="follower-card">
-                <br /><h1>Username: {followers.followers.username}</h1>
-                <h2>Email: {followers.followers.email}</h2><br />
-
-            </div>
-        )
-    }
 
     return (
         <>
