@@ -10,6 +10,7 @@ export default function CreateCard(username) {
     const [outmessage, setOuterMessage] = useState("");
     const [color, setColor] = useState("");
     const [userId, setUserId] = useState("");
+    const [cardCreator, setCardCreator] = useState(null);
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -24,8 +25,6 @@ export default function CreateCard(username) {
             })
             .then((res) => {
                 setUserId(res.id);
-                console.log(res);
-                return res;
             });
 
         axios
@@ -56,10 +55,8 @@ export default function CreateCard(username) {
                 setInnerMessage("");
                 setOuterMessage("");
                 setImg("");
-                console.log(username.username)
-                // setUserI(username.username)
-                return res;
-            });
+                setCardCreator(res.data.card_owner.username)
+            }, [cardCreator]);
     };
     // const onImageChange = (e) => {
     //     const [file] = e.target.files;

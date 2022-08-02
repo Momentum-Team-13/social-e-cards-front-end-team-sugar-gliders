@@ -8,14 +8,14 @@ import axios from "axios";
 
 // adding comment
 export default function Card(props) {
-    const { id, color, index, outmessage, inmessage, img, owner, following, ownerID, followerCardID, userId } = props;
+    const { id, color, index, outmessage, inmessage, img, owner, following, ownerID, followerCardID, cardCreator } = props;
     // const [isFlipped, setIsFlipped] = useState(false);
     const frontEl = useRef();
     const backEl = useRef();
     let token = localStorage.getItem("auth_token");
     const [deleteID, setDeleteID] = useState(null)
     const [currentFollowers, setCurrentFollowers] = useState(following)
-    console.log(ownerID)
+    console.log(cardCreator)
 
 
     const CardStyleOutside = {
@@ -149,7 +149,7 @@ export default function Card(props) {
                     {inmessage}
                     <div className="image">
                         <img src={img} alt="" />
-                        {userId}
+                        <h3>Created by: {cardCreator}</h3>
                         {owner ?
                             (
                                 <button type="submit" id={id} onClick={(event) => deleteCard(event)}>
