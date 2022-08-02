@@ -24,21 +24,29 @@ export default function Card(props) {
         backgroundColor: `#${props.color}`
     };
 
-    const followRequest = () => {
+    const handleFollowRequest = (event) => {
+        event.preventDefault()
         axios
             .post('https://sg-ecard-api.herokuapp.com/followers/', {
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: `Token${token}`,
-                }
+                    Authorization: `Token ${token}`,
+                },
+            })
+    }
+
+    const handleUnfollowRequest = (event) => {
+        event.preventDefault()
+        axios
+            .delete('https://sg-ecard-api.herokuapp.com/followers/', {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Token ${token}`,
+                },
             })
     }
 
 
-    const unfollowRequest = () => {
-        axios
-            .delete()
-    }
 
 
     const deleteCard = (event) => {
@@ -93,8 +101,8 @@ export default function Card(props) {
                     <button type="submit" id={id} onClick={(event) => deleteCard(event)}>
                         Delete Card
                     </button>
-                    {/* <button onClick={() => follow()}>Follow User </button>
-          <button onClick={() => unFollow()}>Unfollow User </button> */}
+                    <button onClick={() => handleFollowRequest()}>Follow User </button>
+                    <button onClick={() => handleUnfollowRequest()}>Unfollow User </button>
                 </div>
             </div>
             {/* </ReactCardFlip> */}

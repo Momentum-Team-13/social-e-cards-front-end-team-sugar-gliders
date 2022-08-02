@@ -45,9 +45,9 @@ const Gallery = () => {
                                         outmessage={card.card_outer_message}
                                         inmessage={card.card_inner_message}
                                         img={card.card_image}
+                                    />
                                     // creator={card.author}
                                     // created={card.date_created}
-                                    />
                                 );
                             })}
                     </div>
