@@ -14,7 +14,7 @@ import LogIn from "./components/logIn";
 import LogOut from "./components/logOut";
 import NewUser from "./components/newUser";
 import Profile from "./components/profile";
-// import EditCard  from "./components/EditCard";
+import EditCard  from "./components/EditCard";
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token"));
@@ -119,7 +119,7 @@ function App() {
           element={
             <div className="mainPage">
               <Navigation setAuth={setAuth} token={token} />
-              {/* <EditCard token={token} comments={comments} /> */}
+              <EditCard token={token}  />
             </div>
           }
         />
