@@ -26,7 +26,7 @@ function LogIn({ auth }, { setAuth }) {
                 localStorage.setItem("auth_token", res.data.auth_token);
                 setData(res);
                 // setUsername(username);
-                // console.log(username);
+
                 setToken(res.data.auth_token);
                 console.log(token)
             })

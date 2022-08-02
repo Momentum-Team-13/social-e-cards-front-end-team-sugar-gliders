@@ -8,12 +8,12 @@ import axios from "axios";
 
 // adding comment
 export default function Card(props) {
-    const { id, color, index, outmessage, inmessage, img } = props;
+    const { id, color, index, outmessage, inmessage, img, owner, following, ownerID } = props;
     // const [isFlipped, setIsFlipped] = useState(false);
     const frontEl = useRef();
     const backEl = useRef();
     let token = localStorage.getItem("auth_token");
-    console.log(props)
+    console.log(ownerID)
 
     const CardStyle = {
         border: "1px solid black",
@@ -64,6 +64,7 @@ export default function Card(props) {
         const element = document.getElementById(event.target.id);
         element.remove();
     };
+
     return (
         <>
             <br />
@@ -98,11 +99,19 @@ export default function Card(props) {
                     <div className="image">
                         <img src={img} alt="" />
                     </div>
-                    <button type="submit" id={id} onClick={(event) => deleteCard(event)}>
-                        Delete Card
-                    </button>
-                    <button onClick={() => handleFollowRequest()}>Follow User </button>
-                    <button onClick={() => handleUnfollowRequest()}>Unfollow User </button>
+                    {owner ?
+                        (
+                            <button type="submit" id={id} onClick={(event) => deleteCard(event)}>
+                                Delete Card
+                            </button>
+                        ) : (
+                            ""
+                        )}
+                    {following ?
+                        (<button onClick={() => handleUnfollowRequest()}>Unfollow User </button>)
+                        :
+                        (<button onClick={() => handleFollowRequest()}>Follow User </button>)
+                    }
                 </div>
             </div>
             {/* </ReactCardFlip> */}

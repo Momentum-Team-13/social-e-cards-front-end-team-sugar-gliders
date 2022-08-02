@@ -24,6 +24,7 @@ export default function SeeProfile({ currentUser }) {
                 })
             .then((res) => {
                 setFollowers(res.data)
+
                 console.log(res.data)
             })
             .catch((res) => {

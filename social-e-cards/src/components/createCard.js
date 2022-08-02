@@ -13,10 +13,7 @@ export default function CreateCard(username) {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log("inner message", inmessage);
-        console.log("outer message", outmessage);
-        console.log(Token);
-        console.log(color);
+
         axios
             .get("https://sg-ecard-api.herokuapp.com/auth/users/me/", {
                 headers: {

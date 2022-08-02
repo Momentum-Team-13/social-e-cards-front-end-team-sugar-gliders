@@ -7,10 +7,11 @@
 .card-preview {
   background: teal;
   width: auto;
-  height: 150px;
+  height: fit-content;
   color: white;
   text-align: center;
   border: black 2px solid;
+
 }
 
 .navigation-bar {
