@@ -89,6 +89,7 @@ function Home({ currentUser }) {
                                 owner={false}
                                 following={followerID}
                                 ownerID={card.card_owner.id}
+                                followerCardID={card.id}
                             />
                         );
                     })}</h3>
@@ -122,6 +123,7 @@ function Home({ currentUser }) {
                                         owner={true}
                                         ownerID={card.card_owner.id}
                                         following={followerID}
+                                        followerCardID={card.id}
                                     />
                                 )
                             })}

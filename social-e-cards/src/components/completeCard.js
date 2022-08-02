@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./css/card.css"
 import Navigation from "./navigation";
 import "bulma/css/bulma.min.css";
@@ -8,11 +8,12 @@ import axios from "axios";
 
 // adding comment
 export default function Card(props) {
-    const { id, color, index, outmessage, inmessage, img, owner, following, ownerID } = props;
+    const { id, color, index, outmessage, inmessage, img, owner, following, ownerID, followerCardID } = props;
     // const [isFlipped, setIsFlipped] = useState(false);
     const frontEl = useRef();
     const backEl = useRef();
     let token = localStorage.getItem("auth_token");
+    const [deleteID, setDeleteID] = useState(null)
 
 
     const CardStyle = {
@@ -24,6 +25,33 @@ export default function Card(props) {
         backgroundColor: `#${props.color}`
     };
 
+
+    useEffect(() => {
+        axios
+            .get('https://sg-ecard-api.herokuapp.com/followers/',
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Token ${token}`,
+                    },
+                })
+            .then((res) => {
+                let array = []
+                res.data.forEach(element => {
+
+                    if (element.following === ownerID) {
+                        console.log(element.id)
+                        setDeleteID(element.id)
+                    }
+                });
+
+            })
+            .catch((res) => {
+                // let error = res.response.data.non_field_errors;
+                // console.log(error);
+                // setError(error);
+            })
+    }, [token]);
     const handleFollowRequest = (event) => {
         event.preventDefault()
         axios
@@ -36,9 +64,8 @@ export default function Card(props) {
     }
 
     const handleUnfollowRequest = (event) => {
-        event.preventDefault()
         axios
-            .delete('https://sg-ecard-api.herokuapp.com/followers/', {
+            .delete(`https://sg-ecard-api.herokuapp.com/followers/${deleteID}`, {
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: `Token ${token}`,
