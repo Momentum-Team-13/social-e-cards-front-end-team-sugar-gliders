@@ -14,6 +14,7 @@ export default function Card(props) {
     const backEl = useRef();
     let token = localStorage.getItem("auth_token");
     const [deleteID, setDeleteID] = useState(null)
+    const [currentFollowers, setCurrentFollowers] = useState(following)
 
 
     const CardStyle = {
@@ -38,7 +39,6 @@ export default function Card(props) {
                 let array = []
                 res.data.forEach(element => {
                     if (element.following === ownerID) {
-                        console.log(element.id)
                         setDeleteID(element.id)
                     }
                 });
@@ -73,10 +73,16 @@ export default function Card(props) {
                     Authorization: `Token ${token}`,
                 },
             })
+            .then(() => {
+                const index = following.indexOf(deleteID)
+                console.log(following)
+                const newFollowers = following.slice(0)
+                newFollowers.splice(index, 1)
+                setCurrentFollowers(newFollowers)
+                console.log(newFollowers)
+            }
+            )
     }
-
-
-
 
     const deleteCard = (event) => {
         // event.preventDefault();
@@ -136,7 +142,7 @@ export default function Card(props) {
                         ) : (
                             ""
                         )}
-                    {following.includes(ownerID) ?
+                    {currentFollowers.includes(ownerID) ?
                         (<button onClick={() => handleUnfollowRequest()}>Unfollow User </button>)
                         :
                         (<button onClick={() => handleFollowRequest()}>Follow User </button>)
