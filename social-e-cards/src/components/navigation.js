@@ -6,7 +6,9 @@ import Profile from "./profile";
 
 function Navigation({ state, handlePersonalProfile }) {
     const areYouLoggedIn = localStorage.getItem("log in")
+    const username = localStorage.getItem("username")
     console.log(areYouLoggedIn)
+    console.log(username)
     return (
         <>
             <div className="navigation-bar">

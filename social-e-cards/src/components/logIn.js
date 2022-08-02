@@ -1,65 +1,3 @@
-
-
-
-//     useEffect(() => {
-//         if (auth) {
-//             setAreYouLoggedIn(true)
-//             localStorage.setItem("log in", "true")
-//             console.log(auth);
-//             console.log(areYouLoggedIn)
-//             console.log("this is true")
-
-//         } else {
-//             console.log("this is false")
-//         }
-//     }, [areYouLoggedIn, auth, username])
-
-//     return (
-//         <>
-//             <br />
-//             <h1 className="app-name">Gliding Sugar Cards</h1>
-//             <br />
-//             <Navigation />
-//             <br />
-//             <h1>Log in form </h1>
-//             {error && <div>{error}</div>}
-//             <label htmlFor='username'>Username</label>
-//             <input type="text"
-//                 id='username'
-//                 required
-//                 value={username}
-//                 onChange={(event) => setUsername(event.target.value)}
-//             />
-//             <form>
-//                 <>
-//                     <label htmlFor='password'>Password</label>
-//                     <input type="text"
-//                         id="password"
-//                         required
-//                         value={password}
-//                         onChange={(event) => setPassword(event.target.value)}
-//                     />
-//                 </>
-//                 <br />
-//                 <br />
-//                 <button type="submit" onClick={(event) => handleSubmit(event)}> {""} Log In</button>
-//             </form>
-//             <br />
-//             <Navigation />
-
-//             {console.log(areYouLoggedIn)}
-
-//             {areYouLoggedIn ? (
-//                 <Navigate to="/" state={{ areYouLoggedIn }} username={{ username }} />)
-//                 : (
-//                     " "
-//                 )}
-//         </>
-//     );
-// }
-
-// export default LogIn
-
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { Navigate, useNavigate } from "react-router-dom"
@@ -69,6 +7,7 @@ import 'bulma/css/bulma.min.css';
 
 function LogIn({ auth }, { setAuth }) {
     const [username, setUsername] = useState('')
+    console.log(username)
     const [password, setPassword] = useState('')
     const [token, setToken] = useState('')
     const [error, setError] = useState([])
@@ -86,6 +25,8 @@ function LogIn({ auth }, { setAuth }) {
             .then((res) => {
                 localStorage.setItem("auth_token", res.data.auth_token);
                 setData(res);
+                // setUsername(username);
+                // console.log(username);
                 setToken(res.data.auth_token);
                 console.log(token)
             })
@@ -100,7 +41,9 @@ function LogIn({ auth }, { setAuth }) {
         if (username && token) {
             setAreYouLoggedIn(true)
             localStorage.setItem("log in", "true")
+            localStorage.setItem("username", `${username}`)
             console.log(token);
+            console.log(username)
             console.log(areYouLoggedIn)
             console.log("this is true")
         } else {
@@ -141,9 +84,9 @@ function LogIn({ auth }, { setAuth }) {
             <br />
             <Navigation />
             {error && <div>{error}</div>}
-            {console.log(areYouLoggedIn)}
+
             {areYouLoggedIn ? (
-                <Navigate to="/" state={{ areYouLoggedIn }} username={{ username }} />)
+                <Navigate to="/" state={{ areYouLoggedIn }} currentUser={{ username }} />)
                 : (
                     " "
                 )}
