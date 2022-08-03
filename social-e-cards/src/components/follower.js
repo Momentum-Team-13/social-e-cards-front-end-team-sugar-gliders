@@ -62,12 +62,12 @@ export default function SeeProfile({ currentUser }) {
             <br />
             <h3>Who You Follow</h3>
             <h5>You are Currently Following {followers.length} People</h5>
+            <h2>See All Followers Cards</h2>
             <div className="people-following">
                 {followers.map((followers, index) => (
                     <Follower followers={followers.user_following} key={index} />
                 ))}
                 <h3 className="card-preview">
-                    See All Followers Cards
                     {followerCards &&
                         followerCards.map((card, index) => {
                             return (

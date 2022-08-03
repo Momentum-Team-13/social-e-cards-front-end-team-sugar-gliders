@@ -43,8 +43,8 @@ function Home({ currentUser }) {
             <Navigation />
 
             <br />
+            <h2>See All Created Cards</h2>
             <h3 className="card-preview">
-                See All Created Cards
                 {cards &&
                     cards.map((card, index) => {
                         return (

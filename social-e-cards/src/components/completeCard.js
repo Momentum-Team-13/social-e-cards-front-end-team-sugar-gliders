@@ -122,13 +122,14 @@ export default function Card(props) {
             {/* <Navigation /> */}
             <br />
             {/* <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal"> */}
-            <div
-                style={CardStyleOutside}
-                // onMouseEnter={() => setIsFlipped((prev) => !prev)}
-                className="CardFront"
-            >
-                <div className="card" id={id} key={index}>
-                    <div className={`${color}`}>
+            <div className="wholeCard">
+                <div
+                    style={CardStyleOutside}
+                    // onMouseEnter={() => setIsFlipped((prev) => !prev)}
+                    className="CardFront"
+                >
+
+                    <div id={id} key={index} className={`${color}`}>
                         <div
                         // className={`card ${flip ? "flip" : ""}`}
                         // onClick={() => setFlip(!flip)}
@@ -138,37 +139,38 @@ export default function Card(props) {
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div
-                style={CardStyleInside}
-                // onMouseLeave={() => setIsFlipped((prev) => !prev)}
-                className="CardBack"
-            >
-                <div className="back" ref={backEl}>
-                    {inmessage}
-                    <div className="image">
-                        <img src={img} alt="" />
-                        <h3>Created by: {cardCreator}</h3>
-                        {owner ?
-                            (
-                                <button
-                                    type="submit"
-                                    id={id}
-                                    onClick={(event) => deleteCard(event)}
-                                // onClick={() => window.location.reload()}
-                                >
-                                    Delete Card
-                                </button>
-                            ) : (
-                                ""
-                            )}
-                        {currentFollowers.includes(ownerID) ?
-                            (<button onClick={() => handleUnfollowRequest()}>Unfollow User </button>)
-                            :
-                            (<button onClick={() => handleFollowRequest()}>Follow User </button>)
-                        }
 
+                </div>
+                <div
+                    style={CardStyleInside}
+                    // onMouseLeave={() => setIsFlipped((prev) => !prev)}
+                    className="CardBack"
+                >
+                    <div className="back" ref={backEl}>
+                        {inmessage}
+                        <div className="image">
+                            <img src={img} alt="" />
+                            <h3>Created by: {cardCreator}</h3>
+                            {owner ?
+                                (
+                                    <button
+                                        type="submit"
+                                        id={id}
+                                        onClick={(event) => deleteCard(event)}
+                                    // onClick={() => window.location.reload()}
+                                    >
+                                        Delete Card
+                                    </button>
+                                ) : (
+                                    ""
+                                )}
+                            {currentFollowers.includes(ownerID) ?
+                                (<button onClick={() => handleUnfollowRequest()}>Unfollow User </button>)
+                                :
+                                (<button onClick={() => handleFollowRequest()}>Follow User </button>)
+                            }
+
+                        </div>
                     </div>
                 </div>
             </div>

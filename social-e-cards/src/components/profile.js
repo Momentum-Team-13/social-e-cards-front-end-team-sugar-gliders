@@ -52,8 +52,9 @@ function Profile(props) {
             <h1>My Profile</h1>
             <h3>Your Cards Below</h3>
             <br />
-            <h3 className="card-preview">
-                Click on a Card to See Inside Message
+            <h2>Click on a Card to See Inside Message</h2>
+            <div className="card-preview">
+                <br />
                 {myCards &&
                     myCards.map((card, index) => {
                         return (
@@ -84,7 +85,7 @@ function Profile(props) {
                     ) : (
                         ""
                     )} */}
-            </h3>
+            </div>
             <div className="bottom-nav">
             </div>
             <br />
