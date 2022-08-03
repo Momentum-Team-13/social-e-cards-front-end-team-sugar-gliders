@@ -49,8 +49,7 @@
 ✅ A user can follow another user
 ✅ A user can unfollow another user
 ✅ A user can see a list of users they follow
-
-🚧 A user can see all the cards they themselves have created
+✅  A user can see cards from a user they follow
+✅ A user can see all the cards they themselves have created
 🚧A user can update (edit) a card they’ve created
-🚧 A user can see cards from a user they follow
 🚧 Read Me page 

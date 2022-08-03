@@ -30,6 +30,8 @@ function Home({ currentUser }) {
             });
     }, [setCards, token]);
 
+    // const seeUserPage()
+
     return (
         <div className="container">
             <br />

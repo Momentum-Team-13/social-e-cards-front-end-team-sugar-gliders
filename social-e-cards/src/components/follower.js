@@ -11,6 +11,7 @@ export default function SeeProfile({ currentUser }) {
     const [followerID, setFollowerID] = useState([]);
     const [error, setError] = useState(null);
     const [followerCards, setFollowerCards] = useState([]);
+    console.log(followers)
 
     let token = localStorage.getItem("auth_token");
 
@@ -60,6 +61,7 @@ export default function SeeProfile({ currentUser }) {
             <Navigation />
             <br />
             <h3>Who You Follow</h3>
+            <h5>You are Currently Following {followers.length} People</h5>
             <div className="people-following">
                 {followers.map((followers, index) => (
                     <Follower followers={followers.user_following} key={index} />
