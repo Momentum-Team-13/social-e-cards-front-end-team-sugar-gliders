@@ -54,7 +54,7 @@ export default function CreateCard(username) {
                 setOuterMessage("");
                 setImg("");
                 setCardCreator(res.data.card_owner.username)
-                returnProfile("/profile/")
+                returnProfile("/profile")
             }, [cardCreator]);
     };
 
