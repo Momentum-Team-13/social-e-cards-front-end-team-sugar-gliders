@@ -35,7 +35,6 @@ export default function CreateCard(username) {
             .post(
                 "https://sg-ecard-api.herokuapp.com/ecards/",
                 {
-
                     card_inner_message: inmessage,
                     card_outer_message: outmessage,
                     card_image: img,

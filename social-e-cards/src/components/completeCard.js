@@ -101,19 +101,22 @@ export default function Card(props) {
     }
 
     const deleteCard = (event) => {
-        // event.preventDefault();
+        event.preventDefault();
         console.log(event.target.id);
-        axios.delete(
-            `https://sg-ecard-api.herokuapp.com/ecards/${event.target.id}`,
-            {
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Token ${token}`,
-                },
-            }
-        );
+        axios
+            .delete(
+                `https://sg-ecard-api.herokuapp.com/ecards/${event.target.id}`,
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Token ${token}`,
+                    },
+                }
+            );
         const element = document.getElementById(event.target.id);
         element.remove();
+        window.location.reload();
+
     };
 
     return (
