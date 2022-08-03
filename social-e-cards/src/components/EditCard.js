@@ -21,8 +21,6 @@ export default function EditCard() {
     let navigate = useNavigate();
     const handleEdit = (event) => {
         event.preventDefault();
-        console.log(userId)
-        console.log(Token);
         axios
             .patch(
                 `https://sg-ecard-api.herokuapp.com/ecards/${cardID}`,
@@ -74,7 +72,7 @@ export default function EditCard() {
                             value={outmessage}
                             name="message"
                             placeholder="Give your card a message!"
-                            onChange={(e) => setInnerMessage(e.target.value)}
+                            onChange={(e) => setOuterMessage(e.target.value)}
                         />
                     </div>
                     <div className="input-field" id="card-message-field">
@@ -85,7 +83,7 @@ export default function EditCard() {
                             value={inmessage}
                             name="message"
                             placeholder="Give your card a message!"
-                            onChange={(e) => setOuterMessage(e.target.value)}
+                            onChange={(e) => setInnerMessage(e.target.value)}
                         />
                     </div>
                     <div>
