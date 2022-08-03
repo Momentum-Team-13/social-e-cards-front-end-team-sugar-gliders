@@ -3,7 +3,9 @@ import { useState } from "react";
 import Navigation from "./navigation";
 import { TwitterPicker } from "react-color";
 import rgbHex from "rgb-hex";
+import { Navigate, useNavigate } from "react-router-dom";
 let Token = localStorage.getItem("auth_token");
+
 export default function CreateCard(username) {
     const [img, setImg] = useState("");
     const [inmessage, setInnerMessage] = useState("");
@@ -11,6 +13,8 @@ export default function CreateCard(username) {
     const [color, setColor] = useState("");
     const [userId, setUserId] = useState("");
     const [cardCreator, setCardCreator] = useState(null);
+    const returnProfile = useNavigate();
+
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -58,6 +62,10 @@ export default function CreateCard(username) {
                 setCardCreator(res.data.card_owner.username)
             }, [cardCreator]);
     };
+    const handleCardCompleted = (event) => {
+        event.preventDefault();
+        <Navigate replace to="/profile/" />
+    }
     // const onImageChange = (e) => {
     //     const [file] = e.target.files;
     //     // setImg(URL.createObjectURL(file));
@@ -71,15 +79,6 @@ export default function CreateCard(username) {
             <br />
             <Navigation />
             <br />
-            {/* <div className="addcard">
-                <div id="preview">
-                    <h2>Card Preview</h2>
-                    <h3>Title: {title}</h3>
-                    <div className={`background_block ${color}`}>
-                        <h4>{message}</h4>
-                    </div>
-                </div>
-            </div> */}
             <div id="cardform">
                 <h2>Customize your card!</h2>
                 <br />
@@ -90,7 +89,10 @@ export default function CreateCard(username) {
                     onChangeComplete={(c) => setColor(rgbHex(c.rgb.r, c.rgb.g, c.rgb.b))}
                 />
                 <p>You picked {color}</p>
-                <form onSubmit={handleSubmit} id="add-card">
+                <form
+                    onSubmit={handleCardCompleted}
+                    id="add-card"
+                >
                     <div className="input-field" id="card-message-field">
                         <label htmlFor="message">Step 2: Write a Message for the Outside of the Card:</label>
                         <br />
@@ -125,18 +127,19 @@ export default function CreateCard(username) {
                                 onChange={(e) => setImg(e.target.value)}
                             />
                         </div>
-                        {/*                         
-                        <label htmlFor="message"> Upload an Image:</label>
-                        <br />
-                        <input type="file" onChange={onImageChange} />
-                        <img src={img} alt="" /> */}
                     </div>
                     <br />
-                    <button type="submit" id="submit">
+                    <button
+                        type="submit"
+                        id="submit"
+                        onClick={handleSubmit}
+                        alert="Card Created"
+                    >
                         Done!
                     </button>
                     <br />
                 </form>
+
             </div>
             <br />
 

@@ -7,6 +7,7 @@ import axios from "axios"
 import Card from "./completeCard";
 
 
+
 function Home({ currentUser }) {
     const { state } = useLocation()
     const [followers, setFollowers] = useState([]);
@@ -15,6 +16,7 @@ function Home({ currentUser }) {
     const [myCards, setMyCards] = useState(null);
     const [followerID, setFollowerID] = useState([]);
     const [error, setError] = useState(null);
+
     let token = localStorage.getItem("auth_token");
 
     useEffect(() => {
@@ -37,7 +39,9 @@ function Home({ currentUser }) {
             <br />
             <h1 className="app-name">Gliding Sugar Cards</h1>
             <br />
+
             <Navigation />
+
             <br />
             <h3 className="card-preview">
                 See All Created Cards

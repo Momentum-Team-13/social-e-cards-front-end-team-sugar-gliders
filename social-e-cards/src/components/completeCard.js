@@ -158,12 +158,13 @@ export default function Card(props) {
                             ) : (
                                 ""
                             )}
+                        {currentFollowers.includes(ownerID) ?
+                            (<button onClick={() => handleUnfollowRequest()}>Unfollow User </button>)
+                            :
+                            (<button onClick={() => handleFollowRequest()}>Follow User </button>)
+                        }
+
                     </div>
-                    {currentFollowers.includes(ownerID) ?
-                        (<button onClick={() => handleUnfollowRequest()}>Unfollow User </button>)
-                        :
-                        (<button onClick={() => handleFollowRequest()}>Follow User </button>)
-                    }
                 </div>
             </div>
             {/* </ReactCardFlip> */}
