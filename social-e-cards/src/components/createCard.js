@@ -35,13 +35,7 @@ export default function CreateCard(username) {
             .post(
                 "https://sg-ecard-api.herokuapp.com/ecards/",
                 {
-                    //dees each card have a specifc id, and/or does each user get an id
-                    // id: userId, --> card ID is auto created 
-                    // card_owne in API call not working 
-                    // created_at: "2022-07-28T21:42:30.175271Z",
-                    // updated_at: "2022-07-28T21:42:30.175310Z",
-                    // card_color_list: "#00FF00",
-                    // card_color: null,
+
                     card_inner_message: inmessage,
                     card_outer_message: outmessage,
                     card_image: img,
@@ -60,16 +54,9 @@ export default function CreateCard(username) {
                 setOuterMessage("");
                 setImg("");
                 setCardCreator(res.data.card_owner.username)
+                returnProfile("/profile/")
             }, [cardCreator]);
     };
-    const handleCardCompleted = (event) => {
-        event.preventDefault();
-        <Navigate replace to="/profile/" />
-    }
-    // const onImageChange = (e) => {
-    //     const [file] = e.target.files;
-    //     // setImg(URL.createObjectURL(file));
-    // };
 
 
     return (
@@ -90,7 +77,7 @@ export default function CreateCard(username) {
                 />
                 <p>You picked {color}</p>
                 <form
-                    onSubmit={handleCardCompleted}
+                    onSubmit={handleSubmit}
                     id="add-card"
                 >
                     <div className="input-field" id="card-message-field">
@@ -132,8 +119,6 @@ export default function CreateCard(username) {
                     <button
                         type="submit"
                         id="submit"
-                        onClick={handleSubmit}
-                        alert="Card Created"
                     >
                         Done!
                     </button>
