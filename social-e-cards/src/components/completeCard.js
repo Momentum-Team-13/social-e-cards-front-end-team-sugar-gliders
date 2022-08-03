@@ -152,7 +152,12 @@ export default function Card(props) {
                         <h3>Created by: {cardCreator}</h3>
                         {owner ?
                             (
-                                <button type="submit" id={id} onClick={(event) => deleteCard(event)}>
+                                <button
+                                    type="submit"
+                                    id={id}
+                                    onClick={(event) => deleteCard(event)}
+                                // onClick={() => window.location.reload()}
+                                >
                                     Delete Card
                                 </button>
                             ) : (

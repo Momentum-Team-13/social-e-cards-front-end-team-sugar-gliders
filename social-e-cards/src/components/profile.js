@@ -5,7 +5,8 @@ import 'bulma/css/bulma.min.css';
 import baseURL from "../App";
 import Card from "./completeCard";
 
-function Profile() {
+function Profile(props) {
+    const { id, owner } = props
     let token = localStorage.getItem("auth_token");
     const [myCards, setMyCards] = useState(null);
     const [followerID, setFollowerID] = useState([]);
@@ -21,6 +22,23 @@ function Profile() {
             .then((res) =>
                 setMyCards(res.data));
     }, [setMyCards, token])
+
+    // const deleteCard = (event) => {
+    //     // event.preventDefault();
+    //     console.log(event.target.id);
+    //     axios
+    //         .delete(
+    //             `https://sg-ecard-api.herokuapp.com/ecards/${event.target.id}`,
+    //             {
+    //                 headers: {
+    //                     "Content-Type": "application/json",
+    //                     Authorization: `Token ${token}`,
+    //                 },
+    //             }
+    //         );
+    //     const element = document.getElementById(event.target.id);
+    //     element.remove();
+    // };
 
     return (
         <>
@@ -55,6 +73,17 @@ function Profile() {
                             />
                         )
                     })}
+                {/* {owner ?
+                    (
+                        <button
+                            type="submit"
+                            id={id}
+                            onClick={(event) => deleteCard(event)}>
+                            Delete Card
+                        </button>
+                    ) : (
+                        ""
+                    )} */}
             </h3>
             <div className="bottom-nav">
             </div>
