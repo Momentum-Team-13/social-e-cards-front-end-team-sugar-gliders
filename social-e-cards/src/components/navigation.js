@@ -21,9 +21,9 @@ function Navigation({ state, handlePersonalProfile }) {
             <button className="nav">
               <Link to={"/createCard"}>Create Cards</Link>
             </button>
-            <button className="nav">
+            {/* <button className="nav">
               <Link to={"edit/:cardId"}>Edit Cards</Link>
-            </button>
+            </button> */}
             <button className="nav">
               <Link to={"/following/"}>Following</Link>
             </button>

@@ -1,50 +1,39 @@
-import { useState, useEffect } from "react";
+import { useState} from "react";
 import axios from "axios";
 import "../App.css";
-import Card from "./completeCard";
 import Navigation from "./navigation";
 import { TwitterPicker } from "react-color";
 import rgbHex from "rgb-hex";
+import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 let Token = localStorage.getItem("auth_token");
-// import { Link } from "react-router-dom";
-// import Select from "react-select";
-// import { useParams } from "react-router-dom";
 
-export default function EditCard(username) {
+
+export default function EditCard() {
   const [img, setImg] = useState("");
   const [inmessage, setInnerMessage] = useState("");
   const [outmessage, setOuterMessage] = useState("");
   const [color, setColor] = useState("");
   const [userId, setUserId] = useState("");
-
+  let params = useParams();
+  let cardID = params.cardId;
+  let navigate = useNavigate();
   const handleEdit = (event) => {
     event.preventDefault();
-    // axios
-    //   .get(`https://sg-ecard-api.herokuapp.com/ecards/${event.target.id}`, {
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //       Authorization: `Token ${Token}`,
-    //     },
-    //   })
-    //   .then((res) => {
-    //     setUserId(res.id);
-    //     console.log(res);
-    //     return res;
-    //   });
-
+    console.log(userId)
+    console.log(Token);
     axios
       .patch(
-        `https://sg-ecard-api.herokuapp.com/ecards/${event.target.id}`,
+        `https://sg-ecard-api.herokuapp.com/ecards/${cardID}`,
         {
+          id: cardID,
           card_inner_message: inmessage,
           card_outer_message: outmessage,
           card_image: img,
           card_color: color,
-          card_owner: { username },
         },
         {
           headers: {
-            "Content-Type": "application/json",
             Authorization: `Token ${Token}`,
           },
         }
@@ -54,74 +43,11 @@ export default function EditCard(username) {
         setOuterMessage("");
         setImg("");
         setUserId(res.id);
-        console.log(username.username);
-        return res;
+
+        navigate("/home");
       });
   };
-  // const options = {
-  //   method: "PATCH",
-  //   url: `https://sg-ecard-api.herokuapp.com/ecards/${event.target.id}`,
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //     Authorization: `Token ${Token}`,
-  //   },
-  //   data: {
-  //     card_inner_message: inmessage,
-  //     card_outer_message: outmessage,
-  //     card_image: img,
-  //     card_color: color,
-  //     card_owner: { username },
-  //   },
-  // };
-
-  //     axios
-  //       .patch(
-  //         `https://sg-ecard-api.herokuapp.com/ecards/${event.target.id}`,
-  //         {
-  //           card_inner_message: inmessage,
-  //           card_outer_message: outmessage,
-  //           card_image: img,
-  //           card_color: color,
-  //           card_owner: { username },
-  //         },
-  //         {
-  //           headers: {
-  //             "Content-Type": "application/json",
-  //             Authorization: `Token ${Token}`,
-  //           },
-  //         }
-  //       )
-  //       .then((res) => {
-  //         setInnerMessage("");
-  //         setOuterMessage("");
-  //         setImg("");
-  //         console.log(username.username);
-  //         return res;
-  //       });
-  //   };
-  // const onImageChange = (e) => {
-  //     const [file] = e.target.files;
-  //     // setImg(URL.createObjectURL(file));
-  // };
-  //   const handleEdit = (e) => {
-  //     e.preventDefault();
-  //     setError("");
-  //     const options = {
-  //       method: "PATCH",
-  //       url: `https://sg-ecard-api.herokuapp.com/ecards/${e.target.id}`,
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         Authorization: `Token ${Token}`,
-  //       },
-  //       data: {
-  //         card_inner_message: inmessage,
-  //           card_outer_message: outmessage,
-  //           card_image: img,
-  //           card_color: color,
-  //           card_owner: { username },
-  //       },
-  //     };
-
+  
   return (
     <>
       <br />
@@ -174,11 +100,6 @@ export default function EditCard(username) {
                 onChange={(e) => setImg(e.target.value)}
               />
             </div>
-            {/*                         
-                        <label htmlFor="message"> Upload an Image:</label>
-                        <br />
-                        <input type="file" onChange={onImageChange} />
-                        <img src={img} alt="" /> */}
           </div>
           <br />
           <button type="submit" id="submit">
