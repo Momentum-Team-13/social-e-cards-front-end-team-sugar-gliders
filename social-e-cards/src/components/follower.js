@@ -90,7 +90,6 @@ export default function SeeProfile({ currentUser }) {
             </div>
             <div className="bottom-nav">
             </div>
-            {/* <div onClick={(e) => seeFollowers(e)}> click to see follower list</div> */}
             <br />
 
         </>

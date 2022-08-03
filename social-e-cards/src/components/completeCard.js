@@ -9,7 +9,6 @@ import axios from "axios";
 // adding comment
 export default function Card(props) {
     const { id, color, index, outmessage, inmessage, img, owner, following, ownerID, followerCardID, cardCreator } = props;
-    // const [isFlipped, setIsFlipped] = useState(false);
     const frontEl = useRef();
     const backEl = useRef();
     let token = localStorage.getItem("auth_token");
@@ -83,6 +82,7 @@ export default function Card(props) {
     }
 
     const handleUnfollowRequest = (event) => {
+
         axios
             .delete(`https://sg-ecard-api.herokuapp.com/followers/${deleteID}`, {
                 headers: {
@@ -97,7 +97,7 @@ export default function Card(props) {
                 setCurrentFollowers(newFollowers)
                 console.log(newFollowers)
             }
-            )
+            );
     }
 
     const deleteCard = (event) => {
@@ -116,7 +116,6 @@ export default function Card(props) {
         const element = document.getElementById(event.target.id);
         element.remove();
         window.location.reload();
-
     };
 
     return (
@@ -167,10 +166,9 @@ export default function Card(props) {
                                 ) : (
                                     ""
                                 )}
-                            {currentFollowers.includes(ownerID) ?
-                                (<button onClick={() => handleUnfollowRequest()}>Unfollow User </button>)
-                                :
-                                (<button onClick={() => handleFollowRequest()}>Follow User </button>)
+                            {(currentFollowers.includes(ownerID) && (!owner)) ? (<button onClick={() => handleUnfollowRequest()}>Unfollow User </button>)
+                                : (!currentFollowers.includes(ownerID) && (!owner)) ? (<button onClick={() => handleFollowRequest()}>Follow User </button>)
+                                    : ""
                             }
 
                         </div>

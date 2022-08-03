@@ -2,3 +2,42 @@
     position: fixed;
     top: 0;
 }
+
+.app-name {
+    border: solid red 2px;
+    text-align: center;
+    width: auto;
+}
+
+.landing-page {
+    display: flex;
+    width: auto;
+    height: 1000px;
+    text-align: center;
+    line-height: 300px;
+    margin: auto;
+    justify-content: center;
+    background-image: url("/public/oksana-berko-EDN6f3Ndpws-unsplash.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.logIn {
+    display: flex;
+    justify-content: center;
+}
+
+.createUser {
+    display: flex;
+}
+
+.landing-nav {
+    width: 500px;
+    height: 250px;
+    color: blue;
+    display: flex;
+    font-size: large;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}

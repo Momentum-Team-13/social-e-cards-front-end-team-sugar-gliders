@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom"
 import LogOut from "./logOut";
 import 'bulma/css/bulma.min.css';
-import Profile from "./profile";
+import "./css/home.css";
 
 
 
@@ -33,17 +33,9 @@ function Navigation({ state, handlePersonalProfile }) {
                         <LogOut />
                     </>
                 ) : (
-                    <>
-                        <button className="nav">
-                            <Link to={"/"}>Home</Link>
-                        </button>
-                        <button className="nav">
-                            <Link to={"/logIn"}>Log In</Link>
-                        </button>
-                        <button className="nav">
-                            <Link to={"/newUser"}>Create User</Link>
-                        </button>
-                    </>
+
+                    ""
+
                 )
                 }
             </div>
