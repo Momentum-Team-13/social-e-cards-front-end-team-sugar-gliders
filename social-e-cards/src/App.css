@@ -4,7 +4,7 @@
   width: auto;
 }
 
-.card-preview {
+/* .card-preview {
   background: teal;
   width: auto;
   height: fit-content;
@@ -12,17 +12,15 @@
   text-align: center;
   border: black 2px solid;
 
-}
+} */
 
-.navigation-bar {
+#navigation-bar {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
   width: auto;
 }
-
-
 
 .nav {
   width: 100px;
@@ -40,6 +38,6 @@ button:hover {
 }
 
 body {
-  background-color: aqua;
+  background-color: rgb(215, 215, 215);
   height: max-content;
 }

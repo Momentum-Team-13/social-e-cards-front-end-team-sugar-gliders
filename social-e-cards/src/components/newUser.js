@@ -73,7 +73,7 @@ function NewUser(baseURL) {
             <br />
             <br />
             <br />
-            <Navigation />
+
             <br />
             {error && <div>{error}</div>}
 

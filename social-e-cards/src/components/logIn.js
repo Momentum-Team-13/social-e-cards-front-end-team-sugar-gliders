@@ -26,7 +26,7 @@ function LogIn({ auth }, { setAuth }) {
                 localStorage.setItem("auth_token", res.data.auth_token);
                 setData(res);
                 // setUsername(username);
-                
+
                 setToken(res.data.auth_token);
                 console.log(token)
             })
@@ -82,7 +82,7 @@ function LogIn({ auth }, { setAuth }) {
                 <button type="submit" onClick={(event) => handleSubmit(event)}> {""} Log In</button>
             </form>
             <br />
-            <Navigation />
+
             {error && <div>{error}</div>}
 
             {areYouLoggedIn ? (

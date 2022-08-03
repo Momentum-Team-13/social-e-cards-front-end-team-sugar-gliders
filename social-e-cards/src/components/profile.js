@@ -3,26 +3,28 @@ import axios from "axios"
 import Navigation from "./navigation";
 import 'bulma/css/bulma.min.css';
 import baseURL from "../App";
+import Card from "./completeCard";
 
-function Profile({ username }, { token }) {
-    // const [follow, setFollow] = useState([]);
-    // const [profileData, setProfileData] = useState([]);
+function Profile(props) {
+    const { id, owner } = props
+    let token = localStorage.getItem("auth_token");
+    const [myCards, setMyCards] = useState(null);
+    const [followerID, setFollowerID] = useState([]);
 
-    // const handlePersonalProfile = (event) => {
-    //     axios
-    //         .get(`${baseURL}/auth/users/me/`, {
-    //             headers: { Authorization: `Token ${token}` },
-    //         })
-    //         .then((res) => {
-    //             console.log(res);
-    //             setProfileData(res.data);
-    //         })
-    //         .catch((res) => console.log(res));
-    // };
+    useEffect(() => {
+        axios
+            .get("https://sg-ecard-api.herokuapp.com/ecards/?list=me", {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Token ${token}`,
+                },
+            })
+            .then((res) =>
+                setMyCards(res.data));
+    }, [setMyCards, token])
 
     return (
         <>
-            {/* <div onClick={(event) => handlePersonalProfile(event)}></div> */}
             <br />
             <h1 className="app-name">Gliding Sugar Cards</h1>
             <br />
@@ -30,10 +32,31 @@ function Profile({ username }, { token }) {
             <Navigation />
             <br />
             <h1>My Profile</h1>
-            <h3>username, email, image, date, ID, name</h3>
+            <h3>Your Cards Below</h3>
             <br />
+            <h2>Click on a Card to See Inside Message</h2>
+            <div className="card-preview">
+                <br />
+                {myCards &&
+                    myCards.map((card, index) => {
+                        return (
+                            <Card
+                                id={card.id}
+                                color={card.card_color}
+                                key={index}
+                                outmessage={card.card_outer_message}
+                                inmessage={card.card_inner_message}
+                                img={card.card_image}
+                                owner={true}
+                                ownerID={card.card_owner.id}
+                                following={followerID}
+                                followerCardID={card.id}
+                                cardCreator={card.card_owner.username}
+                            />
+                        )
+                    })}
+            </div>
             <div className="bottom-nav">
-                <Navigation />
             </div>
             <br />
         </>
@@ -41,62 +64,3 @@ function Profile({ username }, { token }) {
 }
 
 export default Profile
-
-// import axios from "axios";
-// import baseURL from "../App";
-// import { useEffect, useState } from "react";
-// import Navigation from "./navigation";
-
-// export default function SeeProfile({ token, username }) {
-//     const [profileData, setProfileData] = useState(null);
-//     const [editPage, setEditPage] = useState(false);
-
-//     const getprofileData = () => {
-//         axios
-//             .get(`${baseURL}/auth/users/me/`, {
-//                 headers: { Authorization: `Token ${token}` },
-//             })
-//             .then((res) => {
-//                 setProfileData(res.data);
-//                 console.log(res);
-//             })
-//             .catch((res) => console.log(res));
-//     };
-
-//     const seeFollowers = () => {
-//         axios
-//             .get(
-//                 `${baseURL}followers/`,
-//                 {},
-//                 { headers: { Authorization: `Token ${token}` } }
-//             )
-//             .then((res) => console.log(res))
-//             .catch((res) => console.log(res));
-//     };
-
-//     return (
-//         <>
-//             <br />
-//             <h1 className="app-name">Gliding Sugar Cards</h1>
-//             <br />
-//             <Navigation />
-//             <br />
-//             <div onClick={(e) => getprofileData(e)}> click to get user info</div>
-//             {profileData && (
-//                 <div>
-//                     <h1>{profileData.username}'s page</h1>
-//                     <div>Email is: {profileData.email}</div>
-//                     <div>Profile Id Number: {profileData.id}</div>
-//                     {/* <button onClick={() => handleEdit()}>Edit Profile</button> */}
-//                 </div>
-//             )}
-//             <div className="bottom-nav">
-//             </div>
-//             <h3>people following {username}</h3>
-//             <div onClick={(e) => seeFollowers(e)}> click to see follower list</div>
-//             <br />
-
-//             <Navigation />
-//         </>
-//     );
-// }
