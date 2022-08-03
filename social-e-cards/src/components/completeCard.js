@@ -28,7 +28,7 @@ export default function Card(props) {
   const [deleteID, setDeleteID] = useState(null);
   const [currentFollowers, setCurrentFollowers] = useState(following);
 
-  const [showEditBox, setShowEditBox] = useState(false);
+  // const [showEditBox, setShowEditBox] = useState(false);
 
   const CardStyle = {
     border: "1px solid black",
@@ -162,7 +162,18 @@ export default function Card(props) {
               Delete Card
             </button>
           ) : (
-            <Link to={`/edit/${id}`}>Edit</Link>
+            ""
+          )}
+          {owner ? (
+            <button
+              type="submit"
+              id={id}
+              // onClick={(event) => deleteCard(event)}
+            >
+              <Link to={`/edit/${id}`}>Edit</Link>
+            </button>
+          ) : (
+            ""
           )}
           {currentFollowers.includes(ownerID) ? (
             <button onClick={() => handleUnfollowRequest()}>

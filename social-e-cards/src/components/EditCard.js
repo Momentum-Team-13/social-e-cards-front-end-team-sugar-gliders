@@ -19,18 +19,18 @@ export default function EditCard(username) {
 
   const handleEdit = (event) => {
     event.preventDefault();
-    axios
-      .get(`https://sg-ecard-api.herokuapp.com/ecards/${event.target.id}`, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Token ${Token}`,
-        },
-      })
-      .then((res) => {
-        setUserId(res.id);
-        console.log(res);
-        return res;
-      });
+    // axios
+    //   .get(`https://sg-ecard-api.herokuapp.com/ecards/${event.target.id}`, {
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //       Authorization: `Token ${Token}`,
+    //     },
+    //   })
+    //   .then((res) => {
+    //     setUserId(res.id);
+    //     console.log(res);
+    //     return res;
+    //   });
 
     axios
       .patch(
@@ -53,6 +53,7 @@ export default function EditCard(username) {
         setInnerMessage("");
         setOuterMessage("");
         setImg("");
+        setUserId(res.id);
         console.log(username.username);
         return res;
       });
