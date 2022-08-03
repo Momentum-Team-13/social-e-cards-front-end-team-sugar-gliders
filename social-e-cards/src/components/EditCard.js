@@ -44,7 +44,7 @@ export default function EditCard() {
                 setOuterMessage("");
                 setImg("");
                 setUserId(res.id);
-                navigate("/profile/");
+                navigate("/profile");
             });
     };
 
