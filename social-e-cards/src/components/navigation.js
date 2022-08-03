@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom"
 import LogOut from "./logOut";
 import 'bulma/css/bulma.min.css';
-import "./css/home.css";
+// import "./css/home.css";
 
 
 

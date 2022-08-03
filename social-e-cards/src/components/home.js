@@ -5,7 +5,7 @@ import Follower from "./peopleFollowing";
 import { useEffect, useState } from 'react'
 import axios from "axios"
 import Card from "./completeCard";
-import "./css/home.css";
+// import "./css/home.css";
 
 
 
@@ -44,7 +44,7 @@ function Home({ currentUser }) {
             <br />
             {areYouLoggedIn ? (
                 <>
-                    <h2 >See All Created Cards</h2>
+                    <h2>See All Created Cards</h2>
                     <h3 className="card-preview">
                         {cards &&
                             cards.map((card, index) => {
@@ -69,7 +69,7 @@ function Home({ currentUser }) {
                 </>
             ) : (
                 <>
-                    <div className="landing-page">
+                    <div class="box">
                         <h1>Log In or Create User to See Cards!</h1>
                         <button className="landing-nav">
                             <Link to={"/logIn"}>Log In</Link>

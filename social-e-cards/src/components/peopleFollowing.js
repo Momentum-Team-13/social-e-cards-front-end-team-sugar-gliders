@@ -1,3 +1,5 @@
+import 'bulma/css/bulma.min.css';
+
 function Follower(followers) {
     return (
         <div className="follower-card">

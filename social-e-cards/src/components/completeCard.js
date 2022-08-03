@@ -2,8 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import "./css/card.css"
 import Navigation from "./navigation";
 import "bulma/css/bulma.min.css";
-// import ReactCardFlip from "react-card-flip";
-
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 // adding comment
@@ -155,14 +154,22 @@ export default function Card(props) {
                             <h3>Created by: {cardCreator}</h3>
                             {owner ?
                                 (
-                                    <button
-                                        type="submit"
-                                        id={id}
-                                        onClick={(event) => deleteCard(event)}
-                                    // onClick={() => window.location.reload()}
-                                    >
-                                        Delete Card
-                                    </button>
+                                    <>
+                                        <button
+                                            type="submit"
+                                            id={id}
+                                            onClick={(event) => deleteCard(event)}
+                                        // onClick={() => window.location.reload()}
+                                        >
+                                            Delete Card
+                                        </button>
+                                        <button
+                                            type="submit"
+                                            id={id}
+                                        >
+                                            <Link to={`/edit/${id}`}>Edit</Link>
+                                        </button>
+                                    </>
                                 ) : (
                                     ""
                                 )}

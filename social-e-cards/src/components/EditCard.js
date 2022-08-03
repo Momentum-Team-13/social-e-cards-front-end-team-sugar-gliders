@@ -1,50 +1,40 @@
-import axios from "axios";
 import { useState } from "react";
+import axios from "axios";
+import "../App.css";
 import Navigation from "./navigation";
 import { TwitterPicker } from "react-color";
 import rgbHex from "rgb-hex";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import 'bulma/css/bulma.min.css';
 
-export default function CreateCard(username) {
+
+export default function EditCard() {
     let Token = localStorage.getItem("auth_token");
     const [img, setImg] = useState("");
     const [inmessage, setInnerMessage] = useState("");
     const [outmessage, setOuterMessage] = useState("");
     const [color, setColor] = useState("");
     const [userId, setUserId] = useState("");
-    const [cardCreator, setCardCreator] = useState(null);
-    const returnProfile = useNavigate();
-
-
-    const handleSubmit = (event) => {
+    let params = useParams();
+    let cardID = params.cardId;
+    let navigate = useNavigate();
+    const handleEdit = (event) => {
         event.preventDefault();
-
+        console.log(userId)
+        console.log(Token);
         axios
-            .get("https://sg-ecard-api.herokuapp.com/auth/users/me/", {
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Token ${Token}`,
-
-                },
-            })
-            .then((res) => {
-                setUserId(res.id);
-            });
-
-        axios
-            .post(
-                "https://sg-ecard-api.herokuapp.com/ecards/",
+            .patch(
+                `https://sg-ecard-api.herokuapp.com/ecards/${cardID}`,
                 {
+                    id: cardID,
                     card_inner_message: inmessage,
                     card_outer_message: outmessage,
                     card_image: img,
                     card_color: color,
-                    card_owner: { username }
                 },
                 {
                     headers: {
-                        "Content-Type": "application/json",
                         Authorization: `Token ${Token}`,
                     },
                 }
@@ -53,11 +43,10 @@ export default function CreateCard(username) {
                 setInnerMessage("");
                 setOuterMessage("");
                 setImg("");
-                setCardCreator(res.data.card_owner.username)
-                returnProfile("/profile/")
-            }, [cardCreator]);
+                setUserId(res.id);
+                navigate("/profile/");
+            });
     };
-
 
     return (
         <>
@@ -76,30 +65,27 @@ export default function CreateCard(username) {
                     onChangeComplete={(c) => setColor(rgbHex(c.rgb.r, c.rgb.g, c.rgb.b))}
                 />
                 <p>You picked {color}</p>
-                <form
-                    onSubmit={handleSubmit}
-                    id="add-card"
-                >
+                <form onSubmit={handleEdit}>
                     <div className="input-field" id="card-message-field">
-                        <label htmlFor="message">Step 2: Write a Message for the Outside of the Card:</label>
+                        <label htmlFor="message">Step 2: Write a Message for Outside the Card:</label>
                         <br />
                         <input
                             type="textarea"
                             value={outmessage}
                             name="message"
                             placeholder="Give your card a message!"
-                            onChange={(e) => setOuterMessage(e.target.value)}
+                            onChange={(e) => setInnerMessage(e.target.value)}
                         />
                     </div>
                     <div className="input-field" id="card-message-field">
-                        <label htmlFor="message"> Step 3: Write a Message for the Inside of the Card:</label>
+                        <label htmlFor="message"> Step 3: Write a Message for Inside the Card:</label>
                         <br />
                         <input
                             type="textarea"
                             value={inmessage}
                             name="message"
                             placeholder="Give your card a message!"
-                            onChange={(e) => setInnerMessage(e.target.value)}
+                            onChange={(e) => setOuterMessage(e.target.value)}
                         />
                     </div>
                     <div>
@@ -116,26 +102,12 @@ export default function CreateCard(username) {
                         </div>
                     </div>
                     <br />
-                    <button
-                        type="submit"
-                        id="submit"
-                    >
-                        Done!
+                    <button type="submit" id="submit">
+                        Submit Edit
                     </button>
                     <br />
                 </form>
-
             </div>
-            <br />
-
         </>
     );
 }
-
-
-//card created message upon submit
-//clear image after submit like the inner/outer message 
-// submit with user id in card create
-//call by user id cards created 
-
-
