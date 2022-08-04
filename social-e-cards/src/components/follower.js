@@ -55,7 +55,7 @@ export default function SeeProfile({ currentUser }) {
 
     return (
         <>
-            <section class="hero is-fluid has-background-light">
+            <section class="container is-fluid has-background-light">
                 <div class="container is-fluid has-background-light">
                     <nav class="navbar is-spaced is-transparent is-medium is-fixed-top is-flex is-justify-content-space-evenly" role="navigation">
                         <br />
