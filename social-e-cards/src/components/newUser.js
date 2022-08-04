@@ -42,31 +42,34 @@ function NewUser(baseURL) {
     };
     return (
         <>
-            <br />
-            <h1 className="app-name">Gliding Sugar Cards</h1>
-            <br />
-            <Navigation />
-            <br />
-            <h1>Add New User</h1>
+            <nav class="navbar is-spaced is-transparent is-medium is-fixed-top is-flex is-justify-content-space-evenly" role="navigation">
+                <br />
+                <h1 class="title is-2 is-spaced is-centered">Welcome to Gliding Sugar Cards!</h1>
+                <Navigation class="navbar-item is-info is-spaced has-dropdown is-hoverable" />
+                <br />
+            </nav>
+            <h1 class="subtitle is-3 is-flex is-aligned-self-center is-spaced ">Create Your Account</h1>
             <br />
             <div>
-                <label htmlFor="username"> username</label>
+                <label class="label is-large" htmlFor="username"> Username</label>
                 <input
                     id="username"
                     type="text"
+                    class="input is-primary is-rounded is-focused is-large"
                     onChange={(event) => setUsername(event.target.value)}
                 />
             </div>
             <div>
-                <label htmlFor="password"> Password</label>
+                <label class="label is-large" htmlFor="password"> Password</label>
                 <input
                     id="password"
                     type="password"
+                    class="input is-primary is-rounded is-focused is-large"
                     onChange={(event) => setPassword(event.target.value)}
                 />
             </div>
             <br />
-            <button class="button is-primary is-outlined is-rounded is-hovered" type="submit" onClick={(event) => handleNewUser(event)}>
+            <button class="button is-primary is-large is-hover" type="submit" onClick={(event) => handleNewUser(event)}>
                 {" "}
                 Add User
             </button>

@@ -21,7 +21,7 @@ export default function Card(props) {
         padding: "40px",
         margin: "20px",
         width: "300px",
-        height: "150px", 
+        height: "150px",
         backgroundColor: `#${props.color}`
     };
 
@@ -120,20 +120,14 @@ export default function Card(props) {
     return (
         <>
             <br />
-            {/* <Navigation /> */}
             <br />
-            {/* <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal"> */}
             <div className="wholeCard">
                 <div
                     style={CardStyleOutside}
-                    // onMouseEnter={() => setIsFlipped((prev) => !prev)}
                     className="CardFront"
                 >
-
                     <div id={id} key={index} className={`${color}`}>
                         <div
-                        // className={`card ${flip ? "flip" : ""}`}
-                        // onClick={() => setFlip(!flip)}
                         >
                             <div className="front" ref={frontEl}>
                                 {outmessage}
@@ -144,7 +138,6 @@ export default function Card(props) {
                 </div>
                 <div
                     style={CardStyleInside}
-                    // onMouseLeave={() => setIsFlipped((prev) => !prev)}
                     className="CardBack"
                 >
                     <div className="back" ref={backEl}>
@@ -158,14 +151,15 @@ export default function Card(props) {
                                         <button
                                             type="submit"
                                             id={id}
+                                            class="button is-light"
                                             onClick={(event) => deleteCard(event)}
-                                        // onClick={() => window.location.reload()}
                                         >
                                             Delete Card
                                         </button>
                                         <button
                                             type="submit"
                                             id={id}
+                                            class="button is-dark"
                                         >
                                             <Link to={`/edit/${id}`}>Edit</Link>
                                         </button>
@@ -173,8 +167,8 @@ export default function Card(props) {
                                 ) : (
                                     ""
                                 )}
-                            {(currentFollowers.includes(ownerID) && (!owner)) ? (<button onClick={() => handleUnfollowRequest()}>Unfollow User </button>)
-                                : (!currentFollowers.includes(ownerID) && (!owner)) ? (<button onClick={() => handleFollowRequest()}>Follow User </button>)
+                            {(currentFollowers.includes(ownerID) && (!owner)) ? (<button class="button is-medium is-black" onClick={() => handleUnfollowRequest()}>Unfollow User </button>)
+                                : (!currentFollowers.includes(ownerID) && (!owner)) ? (<button class="button is-medium is-black" onClick={() => handleFollowRequest()}>Follow User </button>)
                                     : ""
                             }
 
@@ -182,9 +176,6 @@ export default function Card(props) {
                     </div>
                 </div>
             </div>
-            {/* </ReactCardFlip> */}
-            {/* <Navigation className="bottom-nav" /> */}
-
         </>
     );
 };

@@ -61,82 +61,86 @@ export default function CreateCard(username) {
 
     return (
         <>
-            <nav class="navbar is-transparent is-medium is-fixed-top" role="navigation">
-                <br />
-                <h1 class="title is-2 is-spaced is-centered">Welcome to Gliding Sugar Cards!</h1>
-                <Navigation class="navbar-item has-dropdown is-hoverable" />
-                <br />
-            </nav>
-            <div id="cardform">
-                <h2>Customize your card!</h2>
-                <br />
-                <h3>Step 1: Choose a Color:</h3>
-                <br />
-                <TwitterPicker
-                    color={color}
-                    onChangeComplete={(c) => setColor(rgbHex(c.rgb.r, c.rgb.g, c.rgb.b))}
-                />
-                <p>You picked {color}</p>
-                <form
-                    onSubmit={handleSubmit}
-                    id="add-card"
-                >
-                    <div className="input-field" id="card-message-field">
-                        <label htmlFor="message">Step 2: Write a Message for the Outside of the Card:</label>
+            <section class="hero is-fluid has-background-light">
+                <div class="container is-fluid has-background-light">
+                    <nav class="navbar is-spaced is-transparent is-medium is-fixed-top is-flex is-justify-content-space-evenly" role="navigation">
                         <br />
-                        <input
-                            type="textarea"
-                            value={outmessage}
-                            name="message"
-                            placeholder="Give your card a message!"
-                            onChange={(e) => setOuterMessage(e.target.value)}
-                        />
-                    </div>
-                    <div className="input-field" id="card-message-field">
-                        <label htmlFor="message"> Step 3: Write a Message for the Inside of the Card:</label>
+                        <h1 class="title is-2 is-spaced is-centered">Welcome to Gliding Sugar Cards!</h1>
+                        <Navigation class="navbar-item has-dropdown is-hoverable" />
                         <br />
-                        <input
-                            type="textarea"
-                            value={inmessage}
-                            name="message"
-                            placeholder="Give your card a message!"
-                            onChange={(e) => setInnerMessage(e.target.value)}
-                        />
-                    </div>
-                    <div>
-                        <div className="input-field" id="card-image-field">
-                            <label htmlFor="image"> Step 4: Insert Unsplash URL:</label>
+                    </nav>
+                    <section class="hero has-background-light">
+                        <div id="cardform">
+                            <h2 class="subtitle is-3 is-flex is-aligned-self-center is-spaced ">Customize your card!</h2>
                             <br />
-                            <input
-                                type="textarea"
-                                value={img}
-                                name="image"
-                                placeholder="Enter URL here!"
-                                onChange={(e) => setImg(e.target.value)}
+                            <h3 class="subtitle is-3 is-flex is-aligned-self-center is-spaced ">Step 1: Choose a Color:</h3>
+                            <br />
+                            <TwitterPicker
+                                color={color}
+                                onChangeComplete={(c) => setColor(rgbHex(c.rgb.r, c.rgb.g, c.rgb.b))}
                             />
+                            <p>You picked {color}</p>
+                            <form
+                                onSubmit={handleSubmit}
+                                id="add-card"
+                            >
+                                <div className="input-field" id="card-message-field">
+                                    <label class="subtitle is-3 is-flex is-aligned-self-center is-spaced "
+                                        htmlFor="message">Step 2: Write a Message for the Outside of the Card:
+                                    </label>
+                                    <input
+                                        type="textarea"
+                                        value={outmessage}
+                                        name="message"
+                                        class="input is-link is-rounded is-focused is-medium"
+                                        placeholder="Give your card a message!"
+                                        onChange={(e) => setOuterMessage(e.target.value)}
+                                    />
+                                </div>
+                                <br />
+                                <div className="input-field" id="card-message-field">
+                                    <label class="subtitle is-3 is-flex is-aligned-self-center is-spaced "
+                                        htmlFor="message"> Step 3: Write a Message for the Inside of the Card:
+                                    </label>
+                                    <input
+                                        type="textarea"
+                                        value={inmessage}
+                                        name="message"
+                                        placeholder="Give your card a message!"
+                                        class="input is-link is-rounded is-focused is-medium"
+                                        onChange={(e) => setInnerMessage(e.target.value)}
+                                    />
+                                </div>
+                                <br />
+                                <div>
+                                    <div className="input-field" id="card-image-field">
+                                        <label class="subtitle is-3 is-flex is-aligned-self-center is-spaced "
+                                            htmlFor="image"> Step 4: Insert Unsplash URL:</label>
+                                        <input
+                                            type="textarea"
+                                            value={img}
+                                            name="image"
+                                            placeholder="Enter URL here!"
+                                            class="input is-link is-rounded is-focused is-medium"
+                                            onChange={(e) => setImg(e.target.value)}
+                                        />
+                                    </div>
+                                    <br />
+                                </div>
+                                <br />
+                                <button
+                                    class="button is-link is-large is-rounded"
+                                    type="submit"
+                                    id="submit"
+                                >
+                                    Done!</button>
+                                <br />
+                            </form>
                         </div>
-                    </div>
+                    </section>
                     <br />
-                    <button
-                        type="submit"
-                        id="submit"
-                    >
-                        Done!
-                    </button>
-                    <br />
-                </form>
-
-            </div>
-            <br />
-
+                </div>
+            </section>
         </>
     );
 }
-
-
-//card created message upon submit
-//clear image after submit like the inner/outer message 
-// submit with user id in card create
-//call by user id cards created 
-
-

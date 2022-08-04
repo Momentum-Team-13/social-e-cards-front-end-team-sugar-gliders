@@ -48,7 +48,8 @@ export default function EditCard() {
 
     return (
         <>
-            <nav class="navbar is-transparent is-medium is-fixed-top" role="navigation">
+            <nav class="navbar is-spaced is-transparent is-medium is-fixed-top is-flex is-justify-content-space-evenly"
+                role="navigation">
                 <br />
                 <h1 class="title is-2 is-spaced is-centered">Welcome to Gliding Sugar Cards!</h1>
                 <Navigation class="navbar-item has-dropdown is-hoverable" />

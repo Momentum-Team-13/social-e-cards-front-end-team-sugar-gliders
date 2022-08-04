@@ -55,44 +55,47 @@ export default function SeeProfile({ currentUser }) {
 
     return (
         <>
-            <nav class="navbar is-transparent is-medium is-fixed-top" role="navigation">
-                <br />
-                <h1 class="title is-2 is-spaced is-centered">Welcome to Gliding Sugar Cards!</h1>
-                <Navigation class="navbar-item has-dropdown is-hoverable" />
-                <br />
-            </nav>
-            <h3>Who You Follow</h3>
-            <h5>You are Currently Following {followers.length} People</h5>
-            <h2>See All Followers Cards</h2>
-            <div className="people-following">
-                {followers.map((followers, index) => (
-                    <Follower followers={followers.user_following} key={index} />
-                ))}
-                <h3 className="card-preview">
-                    {followerCards &&
-                        followerCards.map((card, index) => {
-                            return (
-                                <Card
-                                    id={card.id}
-                                    color={card.card_color}
-                                    key={index}
-                                    outmessage={card.card_outer_message}
-                                    inmessage={card.card_inner_message}
-                                    img={card.card_image}
-                                    owner={false}
-                                    following={followerID}
-                                    ownerID={card.card_owner.id}
-                                    followerCardID={card.id}
-                                    cardCreator={card.card_owner.username}
-                                />
-                            );
-                        })}
-                </h3>
-            </div>
-            <div className="bottom-nav">
-            </div>
-            <br />
-
+            <section class="hero is-fluid has-background-light">
+                <div class="container is-fluid has-background-light">
+                    <nav class="navbar is-spaced is-transparent is-medium is-fixed-top is-flex is-justify-content-space-evenly" role="navigation">
+                        <br />
+                        <h1 class="title is-2 is-spaced is-centered">Welcome to Gliding Sugar Cards!</h1>
+                        <Navigation class="navbar-item is-info is-spaced has-dropdown is-hoverable" />
+                        <br />
+                    </nav>
+                    <h3 class="subtitle is-3 is-flex is-aligned-self-center is-spaced ">Who You Follow</h3>
+                    <h5 class="subtitle is-3 is-flex is-aligned-self-center is-spaced ">You are Currently Following {followers.length} People</h5>
+                    <h2 class="subtitle is-3 is-flex is-aligned-self-center is-spaced ">See All Followers Cards</h2>
+                    <div className="people-following">
+                        {followers.map((followers, index) => (
+                            <Follower followers={followers.user_following} key={index} />
+                        ))}
+                        <h3 className="card-preview">
+                            {followerCards &&
+                                followerCards.map((card, index) => {
+                                    return (
+                                        <Card
+                                            id={card.id}
+                                            color={card.card_color}
+                                            key={index}
+                                            outmessage={card.card_outer_message}
+                                            inmessage={card.card_inner_message}
+                                            img={card.card_image}
+                                            owner={false}
+                                            following={followerID}
+                                            ownerID={card.card_owner.id}
+                                            followerCardID={card.id}
+                                            cardCreator={card.card_owner.username}
+                                        />
+                                    );
+                                })}
+                        </h3>
+                    </div>
+                    <div className="bottom-nav">
+                    </div>
+                    <br />
+                </div>
+            </section>
         </>
     );
 }

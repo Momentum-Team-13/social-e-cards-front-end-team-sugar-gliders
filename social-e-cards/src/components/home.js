@@ -41,48 +41,48 @@ function Home({ currentUser }) {
                 <>
                     <section class="hero is-fluid has-background-light">
                         <div class="container is-fluid has-background-light">
-                            <nav class="navbar is-spaced is-transparent is-fullwidth is-medium is-fixed-top" role="navigation">
+                            <nav class="navbar is-spaced is-transparent is-medium is-fixed-top is-flex is-justify-content-space-evenly" role="navigation">
                                 <br />
                                 <h1 class="title is-2 is-spaced is-centered">Welcome to Gliding Sugar Cards!</h1>
-                                <Navigation class="navbar-item is-spaced has-dropdown is-hoverable" />
+                                <Navigation class="navbar-item is-info is-spaced has-dropdown is-hoverable" />
                                 <br />
                             </nav>
+                            <div class='column is-full'>
+                                <br />
+                                <br />
+                                <h2 class="subtitle is-3 is-flex is-aligned-self-center is-spaced ">See All Created Cards</h2>
+                                <h3 className="card-preview">
+                                    {cards &&
+                                        cards.map((card, index) => {
+                                            return (
+                                                <Card
+                                                    id={card.id}
+                                                    color={card.card_color}
+                                                    key={index}
+                                                    outmessage={card.card_outer_message}
+                                                    inmessage={card.card_inner_message}
+                                                    img={card.card_image}
+                                                    owner={false}
+                                                    following={followerID}
+                                                    ownerID={card.card_owner.id}
+                                                    followerCardID={card.id}
+                                                    cardCreator={card.card_owner.username}
+                                                />
+                                            );
+                                        })}
+                                </h3>
+                            </div>
+                            <h1>Currently Logged In : {currentUser}</h1>
                         </div>
-                        <div class='column is-full'>
-                            <br />
-                            <br />
-                            <h2 class="subtitle is-3 is-spaced ">See All Created Cards</h2>
-                            <h3 className="card-preview">
-                                {cards &&
-                                    cards.map((card, index) => {
-                                        return (
-                                            <Card
-                                                id={card.id}
-                                                color={card.card_color}
-                                                key={index}
-                                                outmessage={card.card_outer_message}
-                                                inmessage={card.card_inner_message}
-                                                img={card.card_image}
-                                                owner={false}
-                                                following={followerID}
-                                                ownerID={card.card_owner.id}
-                                                followerCardID={card.id}
-                                                cardCreator={card.card_owner.username}
-                                            />
-                                        );
-                                    })}
-                            </h3>
-                        </div>
-                        <h1>Currently Logged In : {currentUser}</h1>
                     </section>
                 </>
             ) : (
                 <>
                     <section class="hero is-info">
-                        <div class="container is-half is-info">
-                            <div class='column is-full'>
-                                <h1 class="title is-1 is-spaced is-centered">Welcome to Gliding Sugar Cards!</h1>
-                                <h1 class="subtitle is-2  is-spaced is-centered">Log In or Create User to See Cards</h1>
+                        <div class="container  is-info">
+                            <div class='column is-flex-direction-row is-full'>
+                                <h1 class="title is-1 is-spaced is-flex is-justify-content-centered">Welcome to Gliding Sugar Cards!</h1>
+                                <h1 class="subtitle is-2 is-flex is-justify-content-centered">Log In or Create User to See Cards</h1>
                                 <br />
                                 <button class="button is-medium is-fullwidth is-danger is-light is-outlined is-rounded">
                                     <Link to={"/logIn"}>Log In</Link>
