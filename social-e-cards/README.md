@@ -1,5 +1,3 @@
-
-
 # Gliding Sugar Cards
 
 ## Description 
