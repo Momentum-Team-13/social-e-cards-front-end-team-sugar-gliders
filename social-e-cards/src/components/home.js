@@ -6,7 +6,7 @@ import axios from "axios"
 import Card from "./completeCard";
 import 'bulma/css/bulma.min.css';
 
-function Home({ currentUser }) {
+function Home({ currentUser }, { authToken }) {
     const { state } = useLocation()
     const [followers, setFollowers] = useState([]);
     const areYouLoggedIn = localStorage.getItem("log in")

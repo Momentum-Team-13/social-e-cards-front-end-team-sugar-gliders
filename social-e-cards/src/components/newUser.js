@@ -8,7 +8,7 @@ function NewUser(baseURL) {
     const returnHome = useNavigate()
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
-    const [authToken, setAuthToken] = useState('')
+    const [token, setToken] = useState('')
     const [error, setError] = useState([])
     const handleNewUser = (event) => {
         event.preventDefault();
@@ -16,12 +16,12 @@ function NewUser(baseURL) {
             .post(`https://sg-ecard-api.herokuapp.com/auth/users/`, {
                 username: username,
                 password: password,
-                headers: { Authorization: `Token ${authToken}` }
+                headers: { Authorization: `Token ${token}` }
             })
             .then((res) => {
-                console.log(res)
-                localStorage.setItem("log in", "true");
-                setAuthToken(res.data.auth_token)
+                // localStorage.setItem("log in", "true");
+                localStorage.setItem("auth_token", res.data.auth_token);
+                alert("You created a new user! Please log in through the home screen to access all the card features!")
                 returnHome("/")
             })
             .catch((res) => {

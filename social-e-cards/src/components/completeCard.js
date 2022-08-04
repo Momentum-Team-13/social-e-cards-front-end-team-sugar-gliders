@@ -16,9 +16,20 @@ export default function Card(props) {
     const [currentFollowers, setCurrentFollowers] = useState(following)
     // console.log(cardCreator)
     console.log(owner)
-    const reload = useNavigate()
     const [flip, setFlip] = useState(true);
 
+    const outsideCard = {
+        position: "absolute",
+        left: "0%",
+        top: "40%",
+        width: "100%",
+        textAlign: "center"
+    }
+    const insideCard = {
+        textAlign: "center",
+        left: "10%",
+        top: "40%",
+    }
     const InsideButton = {
         position: "absolute",
         left: "30%",
@@ -123,7 +134,7 @@ export default function Card(props) {
             );
         const element = document.getElementById(event.target.id);
         element.remove();
-        reload("/");
+        window.location.reload();
     };
     return (
         <>
@@ -137,13 +148,7 @@ export default function Card(props) {
                                 id={id}
                                 key={index}
                                 className={`${color}`}
-                                style={{
-                                    position: "absolute",
-                                    left: "0%",
-                                    top: "40%",
-                                    width: "100%",
-                                    textAlign: "center"
-                                }}
+                                style={outsideCard}
                                 ref={frontEl}>
                                 {outmessage}
                             </div>
@@ -166,6 +171,7 @@ export default function Card(props) {
                                 x
                             </div>
                             <div
+                                style={insideCard}
                                 ref={backEl}>
                                 {inmessage}
                                 <div class="card-image">

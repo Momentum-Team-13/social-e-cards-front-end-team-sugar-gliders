@@ -61,6 +61,8 @@ function LogIn({ auth }, { setAuth }) {
             </nav>
             <section>
                 <br />
+                <br />
+                <br />
                 <label class="label is-large" htmlFor='username'>Username</label>
                 <input type="text"
                     id='username'
