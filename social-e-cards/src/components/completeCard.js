@@ -72,11 +72,6 @@ export default function Card(props) {
                 });
 
             })
-            .catch((res) => {
-                // let error = res.response.data.non_field_errors;
-                // console.log(error);
-                // setError(error);
-            })
     }, [currentFollowers, token]);
 
     const handleFollowRequest = (event) => {
@@ -152,7 +147,6 @@ export default function Card(props) {
                                 ref={frontEl}>
                                 {outmessage}
                             </div>
-
                             <button
                                 style={InsideButton}
                                 class="button is-light"
@@ -161,7 +155,6 @@ export default function Card(props) {
                             </button>
                             <div style={CreatedBt}>Created by: {cardCreator}</div>
                         </div>
-
                         :
                         <div class="card-content" style={CardStyleInside}>
                             <div

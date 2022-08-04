@@ -19,7 +19,6 @@ export default function CreateCard(username) {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-
         axios
             .get("https://sg-ecard-api.herokuapp.com/auth/users/me/", {
                 headers: {

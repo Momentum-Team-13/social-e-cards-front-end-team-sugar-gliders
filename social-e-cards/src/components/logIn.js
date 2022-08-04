@@ -7,7 +7,6 @@ import 'bulma/css/bulma.min.css';
 
 function LogIn({ auth }, { setAuth }) {
     const [username, setUsername] = useState('')
-    console.log(username)
     const [password, setPassword] = useState('')
     const [token, setToken] = useState('')
     const [error, setError] = useState([])
@@ -25,14 +24,10 @@ function LogIn({ auth }, { setAuth }) {
             .then((res) => {
                 localStorage.setItem("auth_token", res.data.auth_token);
                 setData(res);
-                // setUsername(username);
-
                 setToken(res.data.auth_token);
-                console.log(token)
             })
             .catch((res) => {
                 let error = res.response.data.non_field_errors;
-                console.log(error);
                 setError(error);
             })
     }
@@ -42,12 +37,7 @@ function LogIn({ auth }, { setAuth }) {
             setAreYouLoggedIn(true)
             localStorage.setItem("log in", "true")
             localStorage.setItem("username", `${username}`)
-            console.log(token);
-            console.log(username)
-            console.log(areYouLoggedIn)
-            console.log("this is true")
         } else {
-            console.log("this is false")
         }
     }, [areYouLoggedIn, token, username])
 

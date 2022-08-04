@@ -70,7 +70,6 @@ function Home({ currentUser }, { authToken }) {
                                 <br />
                                 <br />
                                 <h2 class="subtitle is-3 is-flex is-aligned-self-center is-spaced ">See All Created Cards</h2>
-
                                 <div className="card-preview">
                                     {cards &&
                                         cards.map((card, index) => {
