@@ -6,14 +6,14 @@ The concept of our project is to create a social media platform where users are 
 
 The concept of creating a social media application that connects users with the creation of greeting cards was a very interesting and challenging concept to piece together. Once it came together, it produced more than favorable results. Our application consists of:
 
--Creating a Greeting Card with the following customization options: -
-Background color -
-Card Outer Message -
-Card Inner Message -
-Image of your choosing
--Following a User
--A Following page that displays Cards created by your followed users
--A Home page that allows you to see a list of cards created by all users
+-Creating a Greeting Card with the following customization options: 
+- Background color
+- Card Outer Message
+- Card Inner Message 
+- Image of your choosing
+- Following a User
+- A Following page that displays Cards created by your followed users
+- A Home page that allows you to see a list of cards created by all users
 
 ## Getting Started
 
@@ -29,3 +29,5 @@ We have provided an application that is fairly easy to navigate. If you want to 
 -The Log Out Button will log you out of our amazing application.
 
 If you wish to have our application running locally please use the commands (npm install & npm start) in the terminal. We have worked very hard to provide you with a great user experience. So feel free to create some cards and connect with some great people along the way.
+
+## Link to Production Site: https://gilded-zuccutto-07745f.netlify.app/
