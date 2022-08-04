@@ -1,18 +1,8 @@
-.app-name {
+/* .app-name {
   border: solid red 2px;
   text-align: center;
   width: auto;
 }
-
-/* .card-preview {
-  background: teal;
-  width: auto;
-  height: fit-content;
-  color: white;
-  text-align: center;
-  border: black 2px solid;
-
-} */
 
 #navigation-bar {
   display: flex;
@@ -40,4 +30,4 @@ button:hover {
 body {
   background-color: rgb(215, 215, 215);
   height: max-content;
-}
+} */

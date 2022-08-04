@@ -53,12 +53,12 @@ function LogIn({ auth }, { setAuth }) {
 
     return (
         <>
-            <br />
-            <h1 className="app-name">Gliding Sugar Cards</h1>
-            <br />
-
-            <Navigation />
-            <br />
+            <nav class="navbar is-transparent is-fullwidth is-medium is-fixed-top" role="navigation">
+                <br />
+                <h1 class="title is-2 is-spaced is-centered">Welcome to Gliding Sugar Cards!</h1>
+                <Navigation class="navbar-item has-dropdown is-hoverable" />
+                <br />
+            </nav>
             <h1>Log in form </h1>
             <label htmlFor='username'>Username</label>
             <input type="text"
@@ -79,7 +79,7 @@ function LogIn({ auth }, { setAuth }) {
                 </>
                 <br />
                 <br />
-                <button type="submit" onClick={(event) => handleSubmit(event)}> {""} Log In</button>
+                <button class="button is-primary is-hover" type="submit" onClick={(event) => handleSubmit(event)}> {""} Log In</button>
             </form>
             <br />
 

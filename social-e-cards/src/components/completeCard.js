@@ -21,7 +21,7 @@ export default function Card(props) {
         padding: "40px",
         margin: "20px",
         width: "300px",
-        height: "150px",
+        height: "150px", 
         backgroundColor: `#${props.color}`
     };
 

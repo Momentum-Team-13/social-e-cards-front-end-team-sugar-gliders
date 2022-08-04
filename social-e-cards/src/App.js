@@ -49,13 +49,6 @@ function App() {
             </Routes>
         </BrowserRouter>
     );
-
-
-    // return (
-    //     <BrowserRouter>
-    //         <Pages />
-    //     </BrowserRouter>
-    // );
 }
 
 export default App;

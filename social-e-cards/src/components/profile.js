@@ -25,12 +25,12 @@ function Profile(props) {
 
     return (
         <>
-            <br />
-            <h1 className="app-name">Gliding Sugar Cards</h1>
-            <br />
-            <br />
-            <Navigation />
-            <br />
+            <nav class="navbar is-transparent is-medium is-fixed-top" role="navigation">
+                <br />
+                <h1 class="title is-2 is-spaced is-centered">Welcome to Gliding Sugar Cards!</h1>
+                <Navigation class="navbar-item has-dropdown is-hoverable" />
+                <br />
+            </nav>
             <h1>My Profile</h1>
             <h3>Your Cards Below</h3>
             <br />

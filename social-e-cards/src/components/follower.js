@@ -55,11 +55,12 @@ export default function SeeProfile({ currentUser }) {
 
     return (
         <>
-            <br />
-            <h1 className="app-name">Gliding Sugar Cards</h1>
-            <br />
-            <Navigation />
-            <br />
+            <nav class="navbar is-transparent is-medium is-fixed-top" role="navigation">
+                <br />
+                <h1 class="title is-2 is-spaced is-centered">Welcome to Gliding Sugar Cards!</h1>
+                <Navigation class="navbar-item has-dropdown is-hoverable" />
+                <br />
+            </nav>
             <h3>Who You Follow</h3>
             <h5>You are Currently Following {followers.length} People</h5>
             <h2>See All Followers Cards</h2>

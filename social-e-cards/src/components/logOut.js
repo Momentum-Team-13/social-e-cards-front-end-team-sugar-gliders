@@ -14,7 +14,7 @@ function LogOut({ baseURL, setState }) {
 
     return (
         <>
-            <button id='logout' className='nav' type="submit" onClick={(event) => handleLogOut(event)}> {""} Log Out</button>
+            <button class="button is-danger is-outlined has-text-link is-light is-large" type="submit" onClick={(event) => handleLogOut(event)}> {""} Log Out</button>
         </>
     );
 }

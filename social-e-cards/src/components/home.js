@@ -1,11 +1,11 @@
 import { Link, useLocation } from "react-router-dom";
 import Navigation from "./navigation";
-import 'bulma/css/bulma.min.css';
 import Follower from "./peopleFollowing";
 import { useEffect, useState } from 'react'
 import axios from "axios"
 import Card from "./completeCard";
-// import "./css/home.css";
+import 'bulma/css/bulma.min.css';
+
 
 
 
@@ -37,47 +37,64 @@ function Home({ currentUser }) {
 
     return (
         <div className="container">
-            <br />
-            <h1 className="app-name">Gliding Sugar Cards</h1>
-            <br />
-            <Navigation />
-            <br />
             {areYouLoggedIn ? (
                 <>
-                    <h2>See All Created Cards</h2>
-                    <h3 className="card-preview">
-                        {cards &&
-                            cards.map((card, index) => {
-                                return (
-                                    <Card
-                                        id={card.id}
-                                        color={card.card_color}
-                                        key={index}
-                                        outmessage={card.card_outer_message}
-                                        inmessage={card.card_inner_message}
-                                        img={card.card_image}
-                                        owner={false}
-                                        following={followerID}
-                                        ownerID={card.card_owner.id}
-                                        followerCardID={card.id}
-                                        cardCreator={card.card_owner.username}
-                                    />
-                                );
-                            })}
-                    </h3>
-                    <h1>Currently Logged In : {currentUser}</h1>
+                    <section class="hero is-fluid has-background-light">
+                        <div class="container is-fluid has-background-light">
+                            <nav class="navbar is-spaced is-transparent is-fullwidth is-medium is-fixed-top" role="navigation">
+                                <br />
+                                <h1 class="title is-2 is-spaced is-centered">Welcome to Gliding Sugar Cards!</h1>
+                                <Navigation class="navbar-item is-spaced has-dropdown is-hoverable" />
+                                <br />
+                            </nav>
+                        </div>
+                        <div class='column is-full'>
+                            <br />
+                            <br />
+                            <h2 class="subtitle is-3 is-spaced ">See All Created Cards</h2>
+                            <h3 className="card-preview">
+                                {cards &&
+                                    cards.map((card, index) => {
+                                        return (
+                                            <Card
+                                                id={card.id}
+                                                color={card.card_color}
+                                                key={index}
+                                                outmessage={card.card_outer_message}
+                                                inmessage={card.card_inner_message}
+                                                img={card.card_image}
+                                                owner={false}
+                                                following={followerID}
+                                                ownerID={card.card_owner.id}
+                                                followerCardID={card.id}
+                                                cardCreator={card.card_owner.username}
+                                            />
+                                        );
+                                    })}
+                            </h3>
+                        </div>
+                        <h1>Currently Logged In : {currentUser}</h1>
+                    </section>
                 </>
             ) : (
                 <>
-                    <div class="box">
-                        <h1>Log In or Create User to See Cards!</h1>
-                        <button className="landing-nav">
-                            <Link to={"/logIn"}>Log In</Link>
-                        </button>
-                        <button className="landing-nav">
-                            <Link to={"/newUser"}>Create User</Link>
-                        </button>
-                    </div>
+                    <section class="hero is-info">
+                        <div class="container is-half is-info">
+                            <div class='column is-full'>
+                                <h1 class="title is-1 is-spaced is-centered">Welcome to Gliding Sugar Cards!</h1>
+                                <h1 class="subtitle is-2  is-spaced is-centered">Log In or Create User to See Cards</h1>
+                                <br />
+                                <button class="button is-medium is-fullwidth is-danger is-light is-outlined is-rounded">
+                                    <Link to={"/logIn"}>Log In</Link>
+                                </button>
+                                <br />
+                                <button class="button is-medium is-fullwidth is-danger is-light is-outlined is-rounded">
+                                    <Link to={"/newUser"}>Create User</Link>
+                                </button>
+                                <br />
+                            </div>
+                        </div>
+                    </section>
                 </>
             )
             }

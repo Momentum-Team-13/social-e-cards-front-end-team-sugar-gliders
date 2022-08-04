@@ -61,11 +61,12 @@ export default function CreateCard(username) {
 
     return (
         <>
-            <br />
-            <h1 className="app-name">Gliding Sugar Cards</h1>
-            <br />
-            <Navigation />
-            <br />
+            <nav class="navbar is-transparent is-medium is-fixed-top" role="navigation">
+                <br />
+                <h1 class="title is-2 is-spaced is-centered">Welcome to Gliding Sugar Cards!</h1>
+                <Navigation class="navbar-item has-dropdown is-hoverable" />
+                <br />
+            </nav>
             <div id="cardform">
                 <h2>Customize your card!</h2>
                 <br />
