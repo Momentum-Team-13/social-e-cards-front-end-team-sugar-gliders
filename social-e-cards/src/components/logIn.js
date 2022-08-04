@@ -53,43 +53,48 @@ function LogIn({ auth }, { setAuth }) {
 
     return (
         <>
-            <br />
-            <h1 className="app-name">Gliding Sugar Cards</h1>
-            <br />
-
-            <Navigation />
-            <br />
-            <h1>Log in form </h1>
-            <label htmlFor='username'>Username</label>
-            <input type="text"
-                id='username'
-                required
-                value={username}
-                onChange={(event) => setUsername(event.target.value)}
-            />
-            <form>
-                <>
-                    <label htmlFor='password'>Password</label>
-                    <input type="text"
-                        id="password"
-                        required
-                        value={password}
-                        onChange={(event) => setPassword(event.target.value)}
-                    />
-                </>
+            <nav class="navbar is-spaced is-transparent is-medium is-fixed-top is-flex is-justify-content-space-evenly" role="navigation">
+                <br />
+                <h1 class="title is-2 is-spaced is-centered">Welcome to Gliding Sugar Cards!</h1>
+                <Navigation class="navbar-item has-dropdown is-hoverable" />
+                <br />
+            </nav>
+            <section>
+                <br />
+                <label class="label is-large" htmlFor='username'>Username</label>
+                <input type="text"
+                    id='username'
+                    class="input is-primary is-rounded is-focused is-large"
+                    required
+                    value={username}
+                    onChange={(event) => setUsername(event.target.value)}
+                />
                 <br />
                 <br />
-                <button type="submit" onClick={(event) => handleSubmit(event)}> {""} Log In</button>
-            </form>
-            <br />
-
-            {error && <div>{error}</div>}
-
-            {areYouLoggedIn ? (
-                <Navigate to="/" state={{ areYouLoggedIn }} currentUser={{ username }} />)
-                : (
-                    " "
-                )}
+                <form>
+                    <>
+                        <label class="label is-large" htmlFor='password'>Password</label>
+                        <input
+                            type="text"
+                            id="password"
+                            required
+                            value={password}
+                            class="input is-primary is-rounded is-focused is-large"
+                            onChange={(event) => setPassword(event.target.value)}
+                        />
+                    </>
+                    <br />
+                    <br />
+                    <button class="button is-primary is-large is-hover" type="submit" onClick={(event) => handleSubmit(event)}> {""} Log In</button>
+                </form>
+                <br />
+                {error && <div>{error}</div>}
+                {areYouLoggedIn ? (
+                    <Navigate to="/" state={{ areYouLoggedIn }} currentUser={{ username }} />)
+                    : (
+                        " "
+                    )}
+            </section>
         </>
     );
 }

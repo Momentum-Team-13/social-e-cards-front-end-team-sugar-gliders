@@ -41,7 +41,6 @@ const Gallery = () => {
                                         id={card.id}
                                         color={card.card_color}
                                         key={index}
-                                        // msgfont={card.outer_font}
                                         outmessage={card.card_outer_message}
                                         inmessage={card.card_inner_message}
                                         img={card.card_image}
@@ -52,12 +51,8 @@ const Gallery = () => {
                     </div>
                 </div>
             </div>
-
             <br />
         </>
     );
 };
 export default Gallery;
-
-//delete navigation from the card component 
-// add in who created the card to pass data

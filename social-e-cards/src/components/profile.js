@@ -25,40 +25,47 @@ function Profile(props) {
 
     return (
         <>
-            <br />
-            <h1 className="app-name">Gliding Sugar Cards</h1>
-            <br />
-            <br />
-            <Navigation />
-            <br />
-            <h1>My Profile</h1>
-            <h3>Your Cards Below</h3>
-            <br />
-            <h2>Click on a Card to See Inside Message</h2>
-            <div className="card-preview">
+            <section class="hero is-fluid has-background-light">
+                <div class="container is-fluid has-background-light">
+                    <nav class="navbar is-spaced is-transparent is-medium is-fixed-top is-flex is-justify-content-space-evenly" role="navigation">
+                        <br />
+                        <h1 class="title is-2 is-spaced is-centered">Welcome to Gliding Sugar Cards!</h1>
+                        <Navigation class="navbar-item has-dropdown is-hoverable" />
+                        <br />
+                    </nav>
+                </div>
                 <br />
-                {myCards &&
-                    myCards.map((card, index) => {
-                        return (
-                            <Card
-                                id={card.id}
-                                color={card.card_color}
-                                key={index}
-                                outmessage={card.card_outer_message}
-                                inmessage={card.card_inner_message}
-                                img={card.card_image}
-                                owner={true}
-                                ownerID={card.card_owner.id}
-                                following={followerID}
-                                followerCardID={card.id}
-                                cardCreator={card.card_owner.username}
-                            />
-                        )
-                    })}
-            </div>
-            <div className="bottom-nav">
-            </div>
-            <br />
+                <br />
+                <br />
+                <h1 class="subtitle is-3 is-flex is-aligned-self-center is-spaced ">My Profile</h1>
+                <h3 class="subtitle is-3 is-flex is-aligned-self-center is-spaced ">Your Cards Below</h3>
+                <br />
+                <h2>Click on a Card to See Inside Message</h2>
+                <div className="card-preview">
+                    <br />
+                    {myCards &&
+                        myCards.map((card, index) => {
+                            return (
+                                <Card
+                                    id={card.id}
+                                    color={card.card_color}
+                                    key={index}
+                                    outmessage={card.card_outer_message}
+                                    inmessage={card.card_inner_message}
+                                    img={card.card_image}
+                                    owner={true}
+                                    ownerID={card.card_owner.id}
+                                    following={followerID}
+                                    followerCardID={card.id}
+                                    cardCreator={card.card_owner.username}
+                                />
+                            )
+                        })}
+                </div>
+                <div className="bottom-nav">
+                </div>
+                <br />
+            </section>
         </>
     );
 }

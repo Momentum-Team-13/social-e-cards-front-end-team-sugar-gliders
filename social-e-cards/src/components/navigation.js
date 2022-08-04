@@ -12,25 +12,24 @@ function Navigation({ state, handlePersonalProfile }) {
 
     return (
         <>
-            <div id="navigation-bar">
+            <div class="navbar" role="navigation">
                 {areYouLoggedIn ? (
                     <>
-                        <button className="nav">
+                        <button class="button is-outlined is-danger is-light is-large">
                             <Link to={"/"}>Home</Link>
                         </button>
-                        <button className="nav">
+                        <button class="button  is-outlined is-danger is-light is-large">
                             <Link to={"/profile"}>Profile</Link>
                         </button>
-                        <button className="nav">
+                        <button class="button is-danger is-outlined is-light is-large">
                             <Link to={"/createCard"}>Create Cards</Link>
                         </button>
-                        {/* <button className="nav">
-                            <Link to={"/gallery/"}>Gallery</Link>
-                        </button> */}
-                        <button className="nav">
+                        <button class="button is-danger is-light is-outlined is-large">
                             <Link to={"/following/"}>Following</Link>
                         </button>
+
                         <LogOut />
+
                     </>
                 ) : (
 
