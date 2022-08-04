@@ -123,7 +123,7 @@ export default function Card(props) {
             );
         const element = document.getElementById(event.target.id);
         element.remove();
-        reload("/home");
+        reload("/");
     };
     return (
         <>

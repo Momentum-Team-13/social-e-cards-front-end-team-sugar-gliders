@@ -33,8 +33,7 @@ function App() {
         <BrowserRouter>
             <br></br>
             <Routes>
-                <Route path="/home" element={<Home currentUser={username} token={token} />} />
-                <Route path="/" element={<Navigate replace to="/home" />} />
+                <Route path="/" element={<Home currentUser={username} token={token} />} />
                 <Route path="/newUser/" element={<NewUser />} />
                 <Route path="/logIn/" element={<LogIn setAuth={setAuth} />} />
                 <Route path="/profile/" element={<Profile token={token} username={username} />} />
