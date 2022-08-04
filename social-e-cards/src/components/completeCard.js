@@ -2,8 +2,9 @@ import React, { useState, useEffect, useRef } from "react";
 import "./css/card.css"
 import Navigation from "./navigation";
 import "bulma/css/bulma.min.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+
 
 // adding comment
 export default function Card(props) {
@@ -13,24 +14,17 @@ export default function Card(props) {
     let token = localStorage.getItem("auth_token");
     const [deleteID, setDeleteID] = useState(null)
     const [currentFollowers, setCurrentFollowers] = useState(following)
-    console.log(cardCreator)
+    // console.log(cardCreator)
+    console.log(owner)
+    const reload = useNavigate()
+
 
 
     const CardStyleOutside = {
-        border: "3px solid black",
-        padding: "40px",
-        margin: "20px",
-        width: "300px",
-        height: "150px",
         backgroundColor: `#${props.color}`
     };
 
     const CardStyleInside = {
-        border: "2px solid black",
-        padding: "20px",
-        margin: "20px",
-        width: "300px",
-        height: "350px",
         backgroundColor: `#${props.color}`
     };
 
@@ -114,68 +108,73 @@ export default function Card(props) {
             );
         const element = document.getElementById(event.target.id);
         element.remove();
-        window.location.reload();
+        reload("/profile");
     };
-
     return (
         <>
             <br />
             <br />
-            <div className="wholeCard">
-                <div
-                    style={CardStyleOutside}
-                    className="CardFront"
-                >
-                    <div id={id} key={index} className={`${color}`}>
+            <div class="card is-flex is-justify-content-centered ">
+                <div class="card-content">
+                    <div class="content" style={CardStyleOutside}>
+                        <div id={id} key={index} className={`${color}`}>
+                            <div>
+                                <div
+                                    ref={frontEl}>
+                                    {outmessage}
+                                </div>
+                            </div>
+                            <button class="button is-light card-back-modal-trigger" data-target="modal-card-back">
+                                Click Here to See Inside Message
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="card-content" style={CardStyleInside}>
                         <div
-                        >
-                            <div className="front" ref={frontEl}>
-                                {outmessage}
+                            ref={backEl}>
+                            {inmessage}
+                            <div class="card-image">
+                                <figure class="image">
+                                    <img src={img} alt="" />
+                                </figure>
+                            </div>
+                            <h3>Created by: {cardCreator}</h3>
+                            <div class="card-footer">
+                                {owner ?
+                                    (
+                                        <>
+                                            <button
+                                                type="submit"
+                                                id={id}
+                                                class="card-footer-item has-text-link"
+                                                onClick={(event) => deleteCard(event)}
+                                            >
+                                                Delete Card
+                                            </button>
+                                            <button
+                                                type="submit"
+                                                id={id}
+                                                class="card-footer-item is-outlined"
+                                            >
+                                                <Link to={`/edit/${id}`}>Edit</Link>
+                                            </button>
+                                        </>
+                                    ) : (
+                                        ""
+                                    )}
+                                {(currentFollowers.includes(ownerID) && (!owner)) ? (<button class="card-footer-item" onClick={() => handleUnfollowRequest()}>Unfollow User </button>)
+                                    : (!currentFollowers.includes(ownerID) && (!owner)) ? (<button class="card-footer-item" onClick={() => handleFollowRequest()}>Follow User </button>)
+                                        : ""
+                                }
                             </div>
                         </div>
+
+                        <button class="modal-close is-large"></button>
                     </div>
 
                 </div>
-                <div
-                    style={CardStyleInside}
-                    className="CardBack"
-                >
-                    <div className="back" ref={backEl}>
-                        {inmessage}
-                        <div className="image">
-                            <img src={img} alt="" />
-                            <h3>Created by: {cardCreator}</h3>
-                            {owner ?
-                                (
-                                    <>
-                                        <button
-                                            type="submit"
-                                            id={id}
-                                            class="button is-light"
-                                            onClick={(event) => deleteCard(event)}
-                                        >
-                                            Delete Card
-                                        </button>
-                                        <button
-                                            type="submit"
-                                            id={id}
-                                            class="button is-dark"
-                                        >
-                                            <Link to={`/edit/${id}`}>Edit</Link>
-                                        </button>
-                                    </>
-                                ) : (
-                                    ""
-                                )}
-                            {(currentFollowers.includes(ownerID) && (!owner)) ? (<button class="button is-medium is-black" onClick={() => handleUnfollowRequest()}>Unfollow User </button>)
-                                : (!currentFollowers.includes(ownerID) && (!owner)) ? (<button class="button is-medium is-black" onClick={() => handleFollowRequest()}>Follow User </button>)
-                                    : ""
-                            }
-
-                        </div>
-                    </div>
-                </div>
-            </div>
+            </div >
         </>
     );
 };

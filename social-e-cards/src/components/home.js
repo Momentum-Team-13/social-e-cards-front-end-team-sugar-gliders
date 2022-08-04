@@ -6,9 +6,6 @@ import axios from "axios"
 import Card from "./completeCard";
 import 'bulma/css/bulma.min.css';
 
-
-
-
 function Home({ currentUser }) {
     const { state } = useLocation()
     const [followers, setFollowers] = useState([]);
@@ -17,7 +14,6 @@ function Home({ currentUser }) {
     const [myCards, setMyCards] = useState(null);
     const [followerID, setFollowerID] = useState([]);
     const [error, setError] = useState(null);
-
     let token = localStorage.getItem("auth_token");
 
     useEffect(() => {
@@ -33,13 +29,36 @@ function Home({ currentUser }) {
             });
     }, [setCards, token]);
 
-    // const seeUserPage()
+    useEffect(() => {
+        axios
+            .get('https://sg-ecard-api.herokuapp.com/followers/',
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Token ${token}`,
+                    },
+                })
+            .then((res) => {
+                setFollowers(res.data)
+                let array = []
+                res.data.forEach(element => {
+                    array.push(element.following)
+                });
+                setFollowerID(array)
+            })
+            .catch((res) => {
+                let error = res.response.data.non_field_errors;
+                console.log(error);
+                setError(error);
+            })
+    }, [setFollowerID, token]);
+
 
     return (
         <div className="container">
             {areYouLoggedIn ? (
                 <>
-                    <section class="hero is-fluid has-background-light">
+                    <section class="container is-fluid has-background-light">
                         <div class="container is-fluid has-background-light">
                             <nav class="navbar is-spaced is-transparent is-medium is-fixed-top is-flex is-justify-content-space-evenly" role="navigation">
                                 <br />
@@ -51,7 +70,8 @@ function Home({ currentUser }) {
                                 <br />
                                 <br />
                                 <h2 class="subtitle is-3 is-flex is-aligned-self-center is-spaced ">See All Created Cards</h2>
-                                <h3 className="card-preview">
+
+                                <div className="card-preview">
                                     {cards &&
                                         cards.map((card, index) => {
                                             return (
@@ -62,7 +82,7 @@ function Home({ currentUser }) {
                                                     outmessage={card.card_outer_message}
                                                     inmessage={card.card_inner_message}
                                                     img={card.card_image}
-                                                    owner={false}
+                                                    owner={currentUser === card.card_owner.username}
                                                     following={followerID}
                                                     ownerID={card.card_owner.id}
                                                     followerCardID={card.id}
@@ -70,9 +90,8 @@ function Home({ currentUser }) {
                                                 />
                                             );
                                         })}
-                                </h3>
+                                </div>
                             </div>
-                            <h1>Currently Logged In : {currentUser}</h1>
                         </div>
                     </section>
                 </>
