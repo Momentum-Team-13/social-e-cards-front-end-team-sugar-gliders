@@ -48,6 +48,9 @@ function NewUser(baseURL) {
                 <Navigation class="navbar-item is-info is-spaced has-dropdown is-hoverable" />
                 <br />
             </nav>
+            <br />
+            <br />
+            <br />
             <h1 class="subtitle is-3 is-flex is-aligned-self-center is-spaced ">Create Your Account</h1>
             <br />
             <div>
